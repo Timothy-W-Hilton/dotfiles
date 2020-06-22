@@ -7,6 +7,12 @@ ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="blinks"
 
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+   # we're on a linux box
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+     # Mac OSX
+     alias dircolors='gdircolors'
+fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
@@ -113,7 +119,7 @@ export NERSCSCRATCH=/Users/tim/work/NERSC_scratch/
 export PREVIEW=/Applications/Preview.app
 
 # use solarized colors for ls
-eval `gdircolors $HOME/Software/dircolors-solarized/dircolors.ansi-dark`
+eval `dircolors $HOME/Software/dircolors-solarized/dircolors.ansi-dark`
 
 # alias emacs='/usr/local/Cellar/emacs/24.3/Emacs.app/Contents/MacOS/Emacs'
 
