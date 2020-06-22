@@ -10,16 +10,7 @@
 # restore terminal after exiting less, vim, etc.
 altscreen on
 
-setenv TERMINFO /opt/local/share/terminfo
-term xterm-256color
+
 
 escape ^Oo
 defscrollback 5000
-
-# setup 3 windows: one shell, one for gmail, one for R
-screen -t zsh0 0
-screen -t zsh1 1
-screen -t linux_tower 2
-screen -t zsh2 3
-screen -t zsh3 4
-select zsh0

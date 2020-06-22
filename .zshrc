@@ -16,6 +16,8 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
      alias emacs='/usr/local/Cellar/emacs/25.3/bin/emacs'
      alias emacsclient='/usr/local/Cellar/emacs/25.3/bin/emacsclient'
      alias screen='/usr/local/Cellar/screen/4.6.2/bin/screen'
+     export SCREENRC=.screenrc_mac
+
 fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
