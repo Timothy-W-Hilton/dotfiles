@@ -12,6 +12,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 elif [[ "$OSTYPE" == "darwin"* ]]; then
      # Mac OSX
      alias dircolors='gdircolors'
+     alias ls='gls --color=always'
 fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -151,7 +152,6 @@ alias glola10="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Cre
 # "--color=always" causes grep not to disable color output when writing to a pipe.
 alias cgrep='grep --color=always'
 #alias rdesktop_jemez='rdesktop -u Tim 129.24.144.165 -r clipboard:PRIMARYCLIPBOARD -g 100% -KD'
-alias ls='gls --color=always'
 #noappledouble prevents OSX from writing .DS_Store files on remote system
 alias mount_ecampbell_plots='sshfs -p 22 campbell_lab:/home/thilton/Plots/ ~/ecampbell300_plots -oauto_cache,reconnect,noappledouble'
 alias mount_ecampbell_home='sshfs -p 22 campbell_lab:/home/thilton/ ~/work/ecampbell300_Home -oauto_cache,reconnect,noappledouble'
