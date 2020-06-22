@@ -1,0 +1,60 @@
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.x
+*.o
+*.so
+*.pyc
+*.jar
+*.a
+*.la
+*.mod
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+.fuse_hidden*
+.nfs*
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# emacs-generated #
+###################
+*~
+\#*\#
+.\#*
+
+# data/document files #
+#######################
+*.pdf
+*.png
+*.jpg
+*.jpeg
+*.nc
+*.mp4
