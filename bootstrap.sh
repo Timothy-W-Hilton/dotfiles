@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 # pilfered from https://github.com/mathiasbynens/dotfiles/blob/main/bootstrap.sh
 # -- TWH, 22 June 2020
