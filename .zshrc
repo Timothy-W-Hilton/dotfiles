@@ -164,17 +164,19 @@ alias mount_NERSC_home='sshfs nersc_cori:/global/homes/t/twhilton/ ~/work/NERSC_
 alias mount_NERSC_scratch_cori='sshfs nersc_data_xfer:/global/cscratch1/sd/twhilton/ ~/work/NERSC_scratch -oauto_cache,reconnect,defer_permissions,noappledouble,nolocalcaches,no_readahead'
 #'sshfs nersc_cori:/global/homes/t/twhilton/ ~/work/NERSC_home -oauto_cache,reconnect,noappledouble'
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/tim/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/tim/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/tim/anaconda3/etc/profile.d/conda.sh"
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    # >>> conda initialize >>>
+    # !! Contents within this block are managed by 'conda init' !!
+    __conda_setup="$('/Users/tim/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+	eval "$__conda_setup"
     else
-        export PATH="/Users/tim/anaconda3/bin:$PATH"
+	if [ -f "/Users/tim/anaconda3/etc/profile.d/conda.sh" ]; then
+	    . "/Users/tim/anaconda3/etc/profile.d/conda.sh"
+	else
+	    export PATH="/Users/tim/anaconda3/bin:$PATH"
+	fi
     fi
+    unset __conda_setup
+    # <<< conda initialize <<<
 fi
-unset __conda_setup
-# <<< conda initialize <<<
