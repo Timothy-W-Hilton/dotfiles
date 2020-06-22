@@ -13,6 +13,9 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
      # Mac OSX
      alias dircolors='gdircolors'
      alias ls='gls --color=always'
+     alias emacs='/usr/local/Cellar/emacs/25.3/bin/emacs'
+     alias emacsclient='/usr/local/Cellar/emacs/25.3/bin/emacsclient'
+     alias screen='/usr/local/Cellar/screen/4.6.2/bin/screen'
 fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -128,9 +131,6 @@ alias sr='screen -r '
 alias sls='screen -ls'
 alias screenemacs='screen -S emacs -c ~/.screenrc_empty'
 alias anyconnect=/opt/cisco/anyconnect/bin/vpn
-alias emacs='/usr/local/Cellar/emacs/25.3/bin/emacs'
-alias emacsclient='/usr/local/Cellar/emacs/25.3/bin/emacsclient'
-alias screen='/usr/local/Cellar/screen/4.6.2/bin/screen'
 alias rm='rm -i'
 alias lessr='less -r'  #interpret color codes correctly
 alias gmail='mutt -F ~/.muttrc_gmail_new -f ~/Mail/Gmail/INBOX'
