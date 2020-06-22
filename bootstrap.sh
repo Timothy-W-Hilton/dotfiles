@@ -5,6 +5,7 @@
 cd "$(dirname "${BASH_SOURCE}")";
 
 git pull origin master;
+git -C $HOME/Software/dircolors-solarized pull origin master;
 
 function doIt() {
 	rsync --exclude ".git/" \
