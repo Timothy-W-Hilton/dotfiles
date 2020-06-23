@@ -10,6 +10,7 @@
 # restore terminal after exiting less, vim, etc.
 altscreen on
 
+term xterm-256color
 
 
 escape ^Oo

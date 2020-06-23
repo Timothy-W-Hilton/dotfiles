@@ -1,7 +1,6 @@
 source .screenrc
 
 setenv TERMINFO /opt/local/share/terminfo
-term xterm-256color
 
 # setup 3 windows: one shell, one for gmail, one for R
 screen -t zsh0 0
