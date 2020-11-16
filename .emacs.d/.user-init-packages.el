@@ -28,6 +28,7 @@
 			elpy
 			color-theme-solarized
 			boxquote
+			yaml-mode
 			auctex))
 
 ;;; Code:
