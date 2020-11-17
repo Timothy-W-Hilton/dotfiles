@@ -5,14 +5,12 @@
 ;;
 
 (require 'package)
-(defvar user-packages '(ein
-			solarized-theme
+(defvar user-packages '(solarized-theme
 			pdf-tools
 			zenburn-theme
 			websocket
 			visual-fill-column
 			shell-switcher
-			python-pylint
 			python-mode
 			pylint
 			polymode
@@ -26,7 +24,7 @@
 			ess
 			emojify
 			elpy
-			color-theme-solarized
+			solarized-theme
 			boxquote
 			yaml-mode
 			auctex))
@@ -42,7 +40,7 @@
 	     '("gnu" . "http://elpa.gnu.org/packages/"))
 
 (add-to-list 'package-archives
-	     '("melpa" . "http://melpa.milkbox.net/packages/"))
+	     '("melpa" . "http://melpa.org/packages/"))
 
 (package-initialize)
 
