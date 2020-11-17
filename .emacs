@@ -4,12 +4,6 @@
 ;; strategy for separating .emacs into calls to smaller files adapted
 ;; from http://ergoemacs.org/emacs/organize_your_dot_emacs.html
 
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
-(package-initialize)
-
 ;; make sure packages are installed
 (load "~/.emacs.d/.user-init-packages.el")
 
