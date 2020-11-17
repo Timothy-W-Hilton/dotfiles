@@ -18,7 +18,6 @@
 			markdown-mode
 			magit
 			jedi-direx
-			ipython
 			idomenu
 			exec-path-from-shell
 			ess
