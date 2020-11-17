@@ -41,7 +41,7 @@
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.org/packages/"))
 
-(package-initialize)
+(when (< emacs-major-version 27) (package-initialize))
 
 (when (not package-archive-contents)
   (package-refresh-contents))
