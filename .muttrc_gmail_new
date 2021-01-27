@@ -1,0 +1,119 @@
+set imap_user = "timothy.w.hilton@gmail.com"
+
+set smtp_url = "smtp://timothy.w.hilton@smtp.gmail.com:587/"
+set from = "timothy.w.hilton@gmail.com"
+set realname = "Timothy W. Hilton"
+
+# use format=flowed
+set text_flowed=yes
+
+set folder = "imaps://imap.gmail.com:993"
+#set folder = "/Users/tim/Mail/Gmail"
+set spoolfile = "+INBOX"
+set record="+[Gmail].Sent Mail"
+set copy=yes   #don't write a local copy of sent messages
+set postponed="+[Gmail].Drafts"
+
+#set header_cache=$HOME/.mutt/cache/headers
+set message_cachedir=$HOME/.mutt/cache/bodies
+set certificate_file=$HOME/.mutt/certificates  #should be a file, not a directory
+
+set move = no
+
+set smart_wrap
+set wrap=85
+#set wrapmargin=95  #leave 95 spaces to the edge of the terminal.  Works well for full-screen terminal
+
+mailboxes imaps://imap.gmail.com/Inbox
+mailboxes +[Gmail]
+
+set editor="/usr/local/Cellar/emacs/25.3/bin/emacsclient"
+set askcc=yes
+
+# View html mails using lynx
+alternative_order text/plain text/html
+set implicit_autoview
+auto_view text/html  application/x-pgp-message
+#set mailcap_path="~/.mailcap"
+#set mailcap_sanitize=yes
+
+#poll the IMAP mailboxes
+set mail_check=90
+set timeout=15
+
+#make the print command go to a ps file on the desktop
+set print_cmd="enscript -Email -p ~/Desktop/mutt_msg.ps"
+
+#HOW STUFF LOOKS
+
+#order of headers when i read mail
+hdr_order Date: From: Organization: User-Agent: X-Mailer To: Cc: Reply-To: Subject:
+
+ignore *
+unignore Date: From: Organization: User-Agent: X-Mailer To: Cc: Reply-To: Subject:
+
+set forward_format="Fwd: %s"	      # forwarded mail say this
+
+#what the index screens look like
+#note: dates inside brackets use strftime format (see man strftime)
+set index_format="%4C %Z %{%d %b %H:%M} %-15.15L (%4c) %s"
+
+#what the date format looks like
+set date_format="!%a %d %b %Y at %I:%M:%S%p %Z"
+#set date_format="!%a, %b %d, %Y at %I:%M:%S%p %Z"
+
+#what mailboxes/folders look like
+set folder_format="%N %-8.8u %8s %d  %N %f"
+
+set edit_headers		      # i like to see the headers when composing email
+set pager_context=1		      # paging shows me one line leftover
+set pager_stop			      # prevent pager from going to next message unlesss you say so
+set nomarkers			      # no wrap around markers
+set mime_forward=ask-no
+
+#defaults for all folders are threaded w/ mini index of 11 lines "."
+# means all mailboxes
+folder-hook . set sort=threads
+# i get to see the index and pager together when paging
+folder-hook . set pager_index_lines=11
+
+#these don't get sorted by threads
+#folder-hook /var/spool/mail/kodiak set sort=date-received
+#folder-hook +mbox set sort=date-received
+#folder-hook +sent set sort=date-sent
+
+#sets what folders look like, which fields go where, in what order, etc...
+#folder-hook . 'set index_format="%4C %Z %{%b %d} %-15.15F (%4l) %s"'
+#folder-hook lug 'set index_format="%2C %Z %{%b %d} %-15.15F (%4l) %s"'
+#folder-hook admin-lug 'set index_format="%2C %Z %{%b %d} %-15.15F (%4l) %s"'
+#folder-hook bruinlinux 'set index_format="%2C %Z %{%b %d} %-15.15F (%4l) %s"'
+#folder-hook mbox 'set index_format="%2C %Z %{%b %d} %-15.15F (%4l) %s"'
+
+#HOW MUTT BEHAVES
+unset mark_old			      # unread old messages are still unread after quitting
+set auto_tag			      # when tag articles, actions are default for all tagged messages
+set quit=ask-no			      # ask me to quit. default no
+unset confirmappend		      # don't ask me about appending messages to other boxes
+
+#KEY BINDINGS
+bind pager <delete> previous-line
+bind browser e	check-new
+#bind index M "<change-folder>?<toggle-mailboxes><enter><check-new>"
+
+#set aliases
+#set alias_file="~/.alias_mutt"
+#source ~/.alias_mutt
+set query_command="abook --mutt-query '%s'"
+macro pager A |'abook --add-email'\n
+
+
+#define colors
+source $HOME/Software/solarized/mutt-colors-solarized/mutt-colors-solarized-dark-16.muttrc
+#source ~/.mutt_colors
+
+# highlight large messages
+color index brightred     default "!~N ~z 250K-"
+
+# fix the problem where mutt says "no authenticators available" when
+# trying to send mail:
+set smtp_authenticators = 'gssapi:login'
