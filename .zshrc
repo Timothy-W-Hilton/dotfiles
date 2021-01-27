@@ -9,15 +9,18 @@ ZSH_THEME="blinks"
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
    # we're on a linux box
+     function apt-get_history() {
+          zcat /var/log/apt/history.log.*.gz | cat - /var/log/apt/history.log | grep -Po '^Commandline:(?= apt-get)(?=.* install ) \K.*' | sed '1,4d'
+	  }
+
 elif [[ "$OSTYPE" == "darwin"* ]]; then
      # Mac OSX
      alias dircolors='gdircolors'
      alias ls='gls --color=always'
-     alias emacs='/usr/local/Cellar/emacs/25.3/bin/emacs'
-     alias emacsclient='/usr/local/Cellar/emacs/25.3/bin/emacsclient'
-     alias screen='/usr/local/Cellar/screen/4.6.2/bin/screen'
+     alias clear_clipboard='pbcopy < /dev/null'
      export SCREENRC=.screenrc_mac
-
+     alias backup_database='rsync -havu --progress AWS_chatbot:/home/deploy/app/Data/meditation_users.db $HOME/Documents'
+     alias remove_known_host='ssh-keygen -f "/Users/tim/.ssh/known_hosts" -R'
 fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -115,7 +118,7 @@ bindkey '^R' history-incremental-pattern-search-backward
 # set some environment variables
 export BIBINPUTS=~/Library/texmf/bibtex/bib/
 export BSTINPUTS=~/Library/texmf/bibtex/bst/
-export PATH=/Library/TeX/texbin:$HOME/bin:$PATH:/Applications/Inkscape.app/Contents/Resources/bin:/usr/local/bin
+export PATH=/Library/TeX/texbin:$HOME/bin:$PATH:/usr/local/bin
 # use decent colors for colorized grep output
 export GREP_COLOR='0;40;31'
 export SARIKA_INPUT=~/work/Data/STEM/input/
@@ -130,15 +133,14 @@ eval `dircolors $HOME/Software/dircolors-solarized/dircolors.ansi-dark`
 # alias emacs='/usr/local/Cellar/emacs/24.3/Emacs.app/Contents/MacOS/Emacs'
 
 alias sr='screen -r '
+alias srd='screen -DR'
 alias sls='screen -ls'
-alias screenemacs='screen -S emacs -c ~/.screenrc_empty'
+alias screenbackground='screen -S background -c ~/.screenrc_empty'
 alias anyconnect=/opt/cisco/anyconnect/bin/vpn
 alias rm='rm -i'
 alias lessr='less -r'  #interpret color codes correctly
-alias gmail='mutt -F ~/.muttrc_gmail_new -f ~/Mail/Gmail/INBOX'
-alias gmail_online='mutt -F ~/.muttrc_gmail_new'
-alias mercedmail='mutt  -F ~/.muttrc_merced -f /Users/tim/Mail/UC_Merced/INBOX'
-alias mercedmail_online='mutt -F ~/.muttrc_merced_online'
+alias gmail='neomutt -F ~/.muttrc_gmail_new -f ~/Mail/Gmail/INBOX'
+alias gmail_online='neomutt -F ~/.muttrc_gmail_new'
 alias sqs_edison='ssh nersc_edison "/usr/common/software/bin/sqs -u twhilton"'
 alias ec='emacsclient -n'
 alias rsync='rsync --progress'
@@ -165,19 +167,3 @@ alias mount_NERSC_project_cori='sshfs nersc_cori:/project/projectdirs/m2319 ~/wo
 alias mount_NERSC_home='sshfs nersc_cori:/global/homes/t/twhilton/ ~/work/NERSC_home -oauto_cache,reconnect,defer_permissions,noappledouble,nolocalcaches,no_readahead'
 alias mount_NERSC_scratch_cori='sshfs nersc_data_xfer:/global/cscratch1/sd/twhilton/ ~/work/NERSC_scratch -oauto_cache,reconnect,defer_permissions,noappledouble,nolocalcaches,no_readahead'
 #'sshfs nersc_cori:/global/homes/t/twhilton/ ~/work/NERSC_home -oauto_cache,reconnect,noappledouble'
-
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('$HOME/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-   eval "$__conda_setup"
-else
-   if [ -f "$HOME/anaconda3/etc/profile.d/conda.sh" ]; then
-      . "$HOME/anaconda3/etc/profile.d/conda.sh"
-   else
-      export PATH="$HOME/anaconda3/bin:$PATH"
-   fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
