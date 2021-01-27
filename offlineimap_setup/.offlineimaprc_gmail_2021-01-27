@@ -1,0 +1,129 @@
+##################################################
+# General definitions
+##################################################
+
+[general]
+
+pythonfile=~/offlineimap.py
+
+# This specifies where offlineimap is to store its metadata.
+# This directory will be created if it does not already exist.
+metadata = ~/.offlineimap
+# accounts = UCSC,Gmail
+# accounts = UCSC
+accounts = Gmail
+maxsyncaccounts = 3
+
+# You can specify one or more user interface modules for OfflineIMAP
+# to use.  OfflineIMAP will try the first in the list, and if it
+# fails, the second, and so forth.
+ui = blinkenlights
+
+ignore-readonly = no
+
+########## Advanced settings
+
+
+##################################################
+# Mailbox name recorder
+##################################################
+
+# [mbnames]
+
+[ui.blinkenlights]
+# Character used to indicate thread status.
+
+statuschar = .
+
+##################################################
+# Accounts
+##################################################
+
+#---------------------------------------------
+[Account Gmail]
+#---------------------------------------------
+
+localrepository = GmailLocal
+remoterepository = GmailRemote
+
+########## Advanced settings
+#continue running indefinitely, syncing periodically (in minutes)
+autorefresh = 10.0
+#do this many quick updates in between autorefreshes
+quick = 10
+
+# presynchook = imapfilter
+# postsynchook = notifysync.sh
+# You can also specify parameters to the commands
+# presynchook = imapfilter -c someotherconfig.lua
+
+#---------------------------------------------
+[Repository GmailLocal]
+#---------------------------------------------
+
+
+# The types supported are Maildir and IMAP.
+type = Maildir
+
+# Specify local repository.  Your IMAP folders will be synchronized
+# to maildirs created under this path.  OfflineIMAP will create the
+# maildirs for you as needed.
+localfolders = ~/Mail/Gmail
+
+# Specify whether to process all mail folders on the server
+subscribedonly = no
+
+#If you want your Maildir folders to be nested, set it to "/".
+sep = .
+
+#if yes, offlineimap does not modify access time
+restoreatime = no
+
+#---------------------------------------------
+[Repository GmailRemote]
+#---------------------------------------------
+
+# A repository using Gmail's IMAP interface.  Any configuration
+# parameter of `IMAP` type repositories can be used here.  Only
+# `remoteuser` (or `remoteusereval` ) is mandatory.  Default values
+# for other parameters are OK, and you should not need fiddle with
+# those.
+#
+# The Gmail repository will use hard-coded values for `remotehost`,
+# `remoteport`, `tunnel` and `ssl`.  (See
+# http://mail.google.com/support/bin/answer.py?answer=78799&topic=12814)
+# Any attempt to set those parameters will be silently ignored.
+
+type = Gmail
+remoteuser = timothy.w.hilton@gmail.com
+ssl = yes
+# this next line is system-specific; OS-DEFAULT didn't work :(
+# https://superuser.com/questions/927632/configuring-offlineimap-for-gmail-ssl-error
+sslcacertfile = /usr/local/etc/openssl@1.1/cert.pem
+
+# oauth2_client_id = $CLIENT_ID_GMAIL_OAUTH
+# oauth2_client_secret = $CLIENT_SECRET_GMAIL_OAUTH
+
+oauth2_client_id_eval = get_client_id("timothy.w.hilton@gmail.com")
+oauth2_client_secret_eval = get_client_secret("timothy.w.hilton@gmail.com")
+
+oauth2_request_url = https://accounts.google.com/o/oauth2/token
+oauth2_refresh_token_eval = get_refresh_token("timothy.w.hilton@gmail.com")
+#oauth2_refresh_token = $REFRESH_TOKEN_GMAIL_OAUTH
+
+auth_mechanisms = XOAUTH2
+# got refresh token via:
+# python2 ~/Software/gmail-oauth2-tools/python/oauth2.py --generate_oauth2_token --client_id=$CLIENT_ID --client_secret=$CLIENT_SECRET
+
+
+# See http://mail.google.com/support/bin/answer.py?answer=77657&topic=12815
+realdelete = no
+
+# The trash folder name may be different from [Gmail]/Trash
+# for example on german googlemail, this setting should be
+#
+# trashfolder = [Google Mail]/Papierkorb
+#
+# The same is valid for the spam folder
+#
+# spamfolder = [Google Mail]/Spam
