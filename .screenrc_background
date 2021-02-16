@@ -1,0 +1,10 @@
+source .screenrc
+
+setenv TERMINFO /opt/local/share/terminfo
+term xterm-256color
+
+# setup 3 windows: one for emacs, one for offlineimap gmail, one for offlineimap protonamail
+screen -t emacs 0
+screen -t offlineimap gmail
+screen -t offlineimap protonmail 2
+select emacs
