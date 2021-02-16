@@ -1,0 +1,74 @@
+## image display for linux
+# image/*;display %s 2>&1 >/dev/null
+# image/png;display %s 2>&1 >/dev/null
+# image/tiff;display %s 2>&1 >/dev/null
+# image/x-png;display %s 2>&1 >/dev/null
+# image/x-portable-anymap;display %s 2>&1 >/dev/null
+# image/x-portable-bitmap;display %s 2>&1 >/dev/null
+# image/x-portable-graymap;display %s 2>&1 >/dev/null
+# image/x-portable-pixmap;display %s 2>&1 >/dev/null
+# image/x-xpixmap;display %s 2>&1 >/dev/null
+# image/x-xwindowdump;display %s 2>&1 >/dev/null
+
+## image display for OS X
+image/png;View_attachment_mac.sh  %s png
+image/jpg;View_attachment_mac.sh  %s jpg
+image/jpeg;View_attachment_mac.sh  %s jpg
+image/JPG;View_attachment_mac.sh  %s jpg
+image/tiff;View_attachment_mac.sh  %s
+image/x-png;View_attachment_mac.sh  %s
+image/x-portable-anymap;View_attachment_mac.sh  %s
+image/x-portable-bitmap;View_attachment_mac.sh  %s
+image/x-portable-graymap;View_attachment_mac.sh  %s
+image/x-portable-pixmap;View_attachment_mac.sh  %s
+image/x-xpixmap;View_attachment_mac.sh  %s
+image/x-xwindowdump;View_attachment_mac.sh  %s
+image/*;View_attachment_mac.sh  %s
+
+# I *think* the multiple entries here makes it go sequentiall down the
+# list until it finds a program that is available.  Useful if using
+# the same .mailcap on different machines that may not have one or the
+# other.
+#text/html; pandoc -f html -t markdown; copiousoutput; description=HTML Text; test=type pandoc >/dev/null
+#text/html; elinks -dump -eval "set document.codepage.assume = %{charset}" %s; copiousoutput
+# text/html; lynx -dump -force_html -assume_charset %{charset} -localhost %s; copiousoutput
+text/html; elinks -dump -dump-charset utf-8 -default-mime-type text/html %s; needsterminal; copiousoutput;
+text/html; /Applications/Safari.app/Contents/MacOS/Safari %s
+# text/html; elinks -dump --force-html %s; needsterminal; copiousoutput;
+# text/html; lynx -stdin -dump -force_html -width 512 -display_charset=utf-8; copiousoutput; description=HTML Text; test=type lynx >/dev/null
+# text/html; w3m -dump -T text/html -cols 70; copiousoutput; description=HTML Text; test=type w3m >/dev/null
+# text/html; html2text -width 70; copiousoutput; description=HTML Text; test=type html2text >/dev/null
+
+application/pdf; /Applications/Skim.app/Contents/MacOS/Skim %s
+
+application/msword; /Applications/LibreOffice.app/Contents/MacOS/soffice %s
+application/msword; /Applications/LibreOffice.app/Contents/MacOS/soffice %s
+; /Applications/LibreOffice.app/Contents/MacOS/soffice %s
+application/vnd.openxmlformats-officedocument.wordprocessingml.document; /Applications/LibreOffice.app/Contents/MacOS/soffice %s
+application/vnd.openxmlformats-officedocument.wordprocessingml.template; /Applications/LibreOffice.app/Contents/MacOS/soffice %s
+application/vnd.ms-word.document.macroEnabled.12; /Applications/LibreOffice.app/Contents/MacOS/soffice %s
+application/vnd.ms-word.template.macroEnabled.12; /Applications/LibreOffice.app/Contents/MacOS/soffice %s
+; /Applications/LibreOffice.app/Contents/MacOS/soffice %s
+application/vnd.ms-excel; /Applications/LibreOffice.app/Contents/MacOS/soffice %s
+application/vnd.ms-excel; /Applications/LibreOffice.app/Contents/MacOS/soffice %s
+application/vnd.ms-excel; /Applications/LibreOffice.app/Contents/MacOS/soffice %s
+; /Applications/LibreOffice.app/Contents/MacOS/soffice %s
+application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; /Applications/LibreOffice.app/Contents/MacOS/soffice %s
+application/vnd.openxmlformats-officedocument.spreadsheetml.template; /Applications/LibreOffice.app/Contents/MacOS/soffice %s
+application/vnd.ms-excel.sheet.macroEnabled.12; /Applications/LibreOffice.app/Contents/MacOS/soffice %s
+application/vnd.ms-excel.template.macroEnabled.12; /Applications/LibreOffice.app/Contents/MacOS/soffice %s
+application/vnd.ms-excel.addin.macroEnabled.12; /Applications/LibreOffice.app/Contents/MacOS/soffice %s
+application/vnd.ms-excel.sheet.binary.macroEnabled.12; /Applications/LibreOffice.app/Contents/MacOS/soffice %s
+; /Applications/LibreOffice.app/Contents/MacOS/soffice %s
+application/vnd.ms-powerpoint; /Applications/LibreOffice.app/Contents/MacOS/soffice %s
+application/vnd.ms-powerpoint; /Applications/LibreOffice.app/Contents/MacOS/soffice %s
+application/vnd.ms-powerpoint; /Applications/LibreOffice.app/Contents/MacOS/soffice %s
+application/vnd.ms-powerpoint; /Applications/LibreOffice.app/Contents/MacOS/soffice %s
+; /Applications/LibreOffice.app/Contents/MacOS/soffice %s
+application/vnd.openxmlformats-officedocument.presentationml.presentation; /Applications/LibreOffice.app/Contents/MacOS/soffice %s
+application/vnd.openxmlformats-officedocument.presentationml.template; /Applications/LibreOffice.app/Contents/MacOS/soffice %s
+application/vnd.openxmlformats-officedocument.presentationml.slideshow; /Applications/LibreOffice.app/Contents/MacOS/soffice %s
+application/vnd.ms-powerpoint.addin.macroEnabled.12; /Applications/LibreOffice.app/Contents/MacOS/soffice %s
+application/vnd.ms-powerpoint.presentation.macroEnabled.12; /Applications/LibreOffice.app/Contents/MacOS/soffice %s
+application/vnd.ms-powerpoint.presentation.macroEnabled.12; /Applications/LibreOffice.app/Contents/MacOS/soffice %s
+application/vnd.ms-powerpoint.slideshow.macroEnabled.12; /Applications/LibreOffice.app/Contents/MacOS/soffice %s
