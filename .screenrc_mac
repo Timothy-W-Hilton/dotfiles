@@ -5,8 +5,17 @@ term xterm-256color
 
 # setup 3 windows: one shell, one for gmail, one for R
 screen -t zsh0 0
+
 screen -t gmail 1
+select gmail
+stuff "neomutt -F ~/.muttrc_gmail_new -f ~/Mail/Gmail/INBOX ^M"
+
 screen -t tim_mail 2
+select tim_mail
+stuff "mutt -F .muttrc_protonmail ^M"
+
 screen -t zsh2 3
+
 screen -t zsh3 4
+
 select zsh0
