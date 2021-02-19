@@ -9,7 +9,7 @@ set text_flowed=yes
 
 # set folder = "imaps://imap.gmail.com:993"
 set folder = "/Users/tim/Mail/Gmail"
-set spoolfile = "+INBOX"
+set spoolfile = "+[Gmail].INBOX"
 set record="+[Gmail].Sent Mail"
 set copy=yes   #don't write a local copy of sent messages
 set postponed="+[Gmail].Drafts"
@@ -31,10 +31,14 @@ set editor="emacsclient"
 set askcc=yes
 
 # View html mails using lynx
-alternative_order text/plain text/html
-set implicit_autoview
-auto_view text/html  application/x-pgp-message
-#set mailcap_path="~/.mailcap"
+auto_view text/html
+#alternative_order text/enriched text/plain text/html text
+
+# alternative_order text/plain text/html
+# set implicit_autoview
+# auto_view text/html  application/x-pgp-message
+
+set mailcap_path="~/.mailcap"
 #set mailcap_sanitize=yes
 
 #poll the IMAP mailboxes
@@ -74,6 +78,7 @@ set mime_forward=ask-no
 #defaults for all folders are threaded w/ mini index of 11 lines "."
 # means all mailboxes
 folder-hook . set sort=threads
+folder-hook . set sort_aux = reverse-last-date-received
 # i get to see the index and pager together when paging
 folder-hook . set pager_index_lines=11
 
@@ -105,6 +110,10 @@ bind browser e	check-new
 #source ~/.alias_mutt
 set query_command="abook --mutt-query '%s'"
 macro pager A |'abook --add-email'\n
+# the following from http://manpages.ubuntu.com/manpages/precise/man1/urlscan.1.html, https://superuser.com/questions/333862/how-do-i-open-a-link-from-an-email-in-mutt-without-using-the-mouse
+macro index,pager \cb "<pipe-message> urlview<Enter>" "call urlview to extract URLs out of a message"
+macro attach,compose \cb "<pipe-entry> urlview<Enter>" "call urlview to extract URLs out of a message"
+
 
 
 #define colors
