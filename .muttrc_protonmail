@@ -107,7 +107,9 @@ bind browser e	check-new
 #source ~/.alias_mutt
 set query_command="abook --mutt-query '%s'"
 macro pager A |'abook --add-email'\n
-
+# the following from http://manpages.ubuntu.com/manpages/precise/man1/urlscan.1.html, https://superuser.com/questions/333862/how-do-i-open-a-link-from-an-email-in-mutt-without-using-the-mouse
+macro index,pager \cb "<pipe-message> urlview<Enter>" "call urlview to extract URLs out of a message"
+macro attach,compose \cb "<pipe-entry> urlview<Enter>" "call urlview to extract URLs out of a message"
 
 #define colors
 source $HOME/Software/solarized/mutt-colors-solarized/mutt-colors-solarized-dark-16.muttrc
