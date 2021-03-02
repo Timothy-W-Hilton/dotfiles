@@ -58,13 +58,15 @@ unignore Date: From: Organization: User-Agent: X-Mailer To: Cc: Reply-To: Subjec
 
 set forward_format="Fwd: %s"	      # forwarded mail say this
 
+
 #what the index screens look like
 #note: dates inside brackets use strftime format (see man strftime)
-set index_format="%4C %Z %{%d %b %Y %H:%M} %-15.15L (%4c) %s"
+# %D: display dates in local timezone; %d: display dates in sender's timezone
+set index_format="%4C %Z %D    %-15.15L (%4c) %s"
 
 #what the date format looks like
-set date_format="!%a %d %b %Y at %I:%M:%S%p %Z"
-#set date_format="!%a, %b %d, %Y at %I:%M:%S%p %Z"
+set date_format="!%a %d %b %Y at %H:%M %Z"
+#set date_format="!%a, %b %d, %Y at %I:%M:%S%p %Z"   # display 12-hour clock with AM/PM
 
 #what mailboxes/folders look like
 set folder_format="%N %-8.8u %8s %d  %N %f"
