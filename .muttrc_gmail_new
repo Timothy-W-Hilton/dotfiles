@@ -18,6 +18,8 @@ set postponed="+[Gmail].Drafts"
 set message_cachedir=$HOME/.mutt/cache/bodies
 set certificate_file=$HOME/.mutt/certificates  #should be a file, not a directory
 
+set signature=.signature_gmail
+
 set move = no
 
 set smart_wrap
