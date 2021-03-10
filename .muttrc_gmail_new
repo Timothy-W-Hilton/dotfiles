@@ -13,6 +13,7 @@ set spoolfile = "+[Gmail].INBOX"
 set record="+[Gmail].Sent Mail"
 set copy=yes   #don't write a local copy of sent messages
 set postponed="+[Gmail].Drafts"
+set trash="+[Gmail].Trash"
 
 #set header_cache=$HOME/.mutt/cache/headers
 set message_cachedir=$HOME/.mutt/cache/bodies
