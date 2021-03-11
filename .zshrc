@@ -5,7 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="blinks"
+ZSH_THEME="duellj"  #"blinks"
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
    # we're on a linux box
@@ -118,7 +118,7 @@ bindkey '^R' history-incremental-pattern-search-backward
 # set some environment variables
 export BIBINPUTS=~/Library/texmf/bibtex/bib/
 export BSTINPUTS=~/Library/texmf/bibtex/bst/
-export PATH=/Library/TeX/texbin:$HOME/bin:$PATH:/usr/local/bin
+export PATH=/Library/TeX/texbin:$HOME/bin:/usr/local/bin:$PATH
 # use decent colors for colorized grep output
 export GREP_COLOR='0;40;31'
 export SARIKA_INPUT=~/work/Data/STEM/input/
@@ -135,11 +135,12 @@ eval `dircolors $HOME/Software/dircolors-solarized/dircolors.ansi-dark`
 alias sr='screen -r '
 alias srd='screen -DR'
 alias sls='screen -ls'
-alias screenbackground='screen -S background -c ~/.screenrc_empty'
+alias screenbackground='screen -S background -c ~/.screenrc_background'
 alias anyconnect=/opt/cisco/anyconnect/bin/vpn
 alias rm='rm -i'
 alias lessr='less -r'  #interpret color codes correctly
-alias gmail='neomutt -F ~/.muttrc_gmail_new -f ~/Mail/Gmail/INBOX'
+alias gmail='source /Users/tim/venv_mutt/bin/activate && neomutt -F ~/.muttrc_gmail_new -f ~/Mail/Gmail/INBOX'
+alias tim_mail='source /Users/tim/venv_mutt/bin/activate && mutt -F .muttrc_protonmail'
 alias gmail_online='neomutt -F ~/.muttrc_gmail_new'
 alias sqs_edison='ssh nersc_edison "/usr/common/software/bin/sqs -u twhilton"'
 alias ec='emacsclient -n'
