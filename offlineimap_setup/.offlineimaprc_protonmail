@@ -2,6 +2,11 @@
 accounts = protonmail
 pythonfile=./offlineimap.py
 
+# You can specify one or more user interface modules for OfflineIMAP
+# to use.  OfflineIMAP will try the first in the list, and if it
+# fails, the second, and so forth.
+ui = blinkenlights
+
 [Account protonmail]
 localrepository = protonmail-local
 remoterepository = protonmail-remote
@@ -37,7 +42,7 @@ holdconnectionopen = yes
 expunge = yes
 
 # sync only these folders
-folderfilter = lambda foldername: foldername in ['INBOX', 'Archive', 'Sent']
+folderfilter = lambda foldername: foldername in ['INBOX', 'Archive', 'Sent', 'Drafts']
 
 # is broken, but connecting locally to bridge so should be ok
 ssl = no
