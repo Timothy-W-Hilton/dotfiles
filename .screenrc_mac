@@ -8,11 +8,11 @@ screen -t zsh0 0
 
 screen -t gmail 1
 select gmail
-stuff "neomutt -F ~/.muttrc_gmail_new -f ~/Mail/Gmail/INBOX ^M"
+stuff "gmail ^M"  # gmail alias defined in .zshrc
 
 screen -t tim_mail 2
 select tim_mail
-stuff "mutt -F .muttrc_protonmail ^M"
+stuff "tim_mail ^M" # tim_mail alias defined in .zshrc (goes to protonmail)
 
 screen -t zsh2 3
 
