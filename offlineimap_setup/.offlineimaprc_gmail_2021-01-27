@@ -101,15 +101,21 @@ ssl = yes
 # https://superuser.com/questions/927632/configuring-offlineimap-for-gmail-ssl-error
 sslcacertfile = /usr/local/etc/openssl@1.1/cert.pem
 
-# oauth2_client_id = $CLIENT_ID_GMAIL_OAUTH
-# oauth2_client_secret = $CLIENT_SECRET_GMAIL_OAUTH
+# I set up oauth like this (see Notes/general.md 2021-01-27):
+# - [configuring gmail oauth for offlineimap](https://hobo.house/2017/07/17/using-offlineimap-with-the-gmail-imap-api/)
+#   - first enabled oauth in google account settings.  Used 'external' option on oauth consent screen
+#   - generated client ID and client secret in 'credentials' tab in google account settings
+#   - cloned https://github.com/google/gmail-oauth2-tools
+#   - ran
 
+# 		python2 python/oauth2.py --generate_oauth2_token --client_id=YOUR_CLIENT_ID --client_secret=YOUR_CLIENT_SECRET
+#
+# get_client_id(), get_client_secret(), get_refresh_token() are defined in ~/offlineimap.py, linked to this config file via the variable pythonfile, set above
 oauth2_client_id_eval = get_client_id("timothy.w.hilton@gmail.com")
 oauth2_client_secret_eval = get_client_secret("timothy.w.hilton@gmail.com")
 
 oauth2_request_url = https://accounts.google.com/o/oauth2/token
 oauth2_refresh_token_eval = get_refresh_token("timothy.w.hilton@gmail.com")
-#oauth2_refresh_token = $REFRESH_TOKEN_GMAIL_OAUTH
 
 auth_mechanisms = XOAUTH2
 # got refresh token via:
