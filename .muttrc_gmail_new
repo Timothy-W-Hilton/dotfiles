@@ -80,6 +80,8 @@ set pager_stop			      # prevent pager from going to next message unlesss you sa
 set nomarkers			      # no wrap around markers
 set mime_forward=ask-no
 
+set strict_threads=yes   # less likely to group unrelated messages with same subject into a thread
+
 #defaults for all folders are threaded w/ mini index of 11 lines "."
 # means all mailboxes
 folder-hook . set sort=threads

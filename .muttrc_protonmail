@@ -34,6 +34,7 @@ set askcc=yes
 alternative_order text/plain text/html
 set implicit_autoview
 auto_view text/html  application/x-pgp-message
+
 #set mailcap_path="~/.mailcap"
 #set mailcap_sanitize=yes
 
@@ -66,13 +67,15 @@ set date_format="!%a %d %b %Y at %H:%M %Z"
 #what mailboxes/folders look like
 set folder_format="%N %-8.8u %8s %d  %N %f"
 
-set editor=emacsclient
+set editor="emacsclient"
 
 set edit_headers		      # i like to see the headers when composing email
 set pager_context=1		      # paging shows me one line leftover
 set pager_stop			      # prevent pager from going to next message unlesss you say so
 set nomarkers			      # no wrap around markers
 set mime_forward=ask-no
+
+set strict_threads=yes   # less likely to group unrelated messages with same subject into a thread
 
 #defaults for all folders are threaded w/ mini index of 11 lines "."
 # means all mailboxes
@@ -112,7 +115,7 @@ bind editor <Tab> complete-query
 bind editor ^T    complete
 
 # the following from http://manpages.ubuntu.com/manpages/precise/man1/urlscan.1.html, https://superuser.com/questions/333862/how-do-i-open-a-link-from-an-email-in-mutt-without-using-the-mouse
-# I installed urlscan in a python3 virtualenv using pip because there is no urlscan package on homebrew (11 Mar 2021)
+
 macro index,pager \cb "<pipe-message> urlscan<Enter>" "call urlview to extract URLs out of a message"
 macro attach,compose \cb "<pipe-entry> urlscan<Enter>" "call urlview to extract URLs out of a message"
 
