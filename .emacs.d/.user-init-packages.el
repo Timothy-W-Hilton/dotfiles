@@ -42,12 +42,15 @@
 ;; ("melpa" . "http://melpa.milkbox.net/packages/")
 
 (add-to-list 'package-archives
-	     '("gnu" . "http://elpa.gnu.org/packages/"))
+	     '("gnu" . "https://elpa.gnu.org/packages/"))
+
+;; (add-to-list 'package-archives
+;; 	     '("melpa" . "https://melpa.org/packages/"))
 
 (add-to-list 'package-archives
-	     '("melpa" . "http://melpa.org/packages/"))
+	     '("melpa" . "http://www.mirrorservice.org/sites/melpa.org/packages/"))
 
-(when (< emacs-major-version 27) (package-initialize))
+;;(package-initialize)
 
 (when (not package-archive-contents)
   (package-refresh-contents))
