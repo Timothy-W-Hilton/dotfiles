@@ -5,12 +5,14 @@
 ;;
 
 (require 'package)
-(defvar user-packages '(solarized-theme
+(defvar user-packages '(ein
+			solarized-theme
 			pdf-tools
 			zenburn-theme
 			websocket
 			visual-fill-column
 			shell-switcher
+			python-pylint
 			python-mode
 			pylint
 			polymode
@@ -18,15 +20,19 @@
 			markdown-mode
 			magit
 			jedi-direx
+			ipython
 			idomenu
 			exec-path-from-shell
 			ess
 			emojify
 			elpy
-			solarized-theme
+			color-theme-solarized
 			boxquote
+			auctex
+			nginx-mode
 			yaml-mode
-			auctex))
+			hide-lines
+			ag))
 
 ;;; Code:
 
