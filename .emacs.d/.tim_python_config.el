@@ -7,12 +7,18 @@
 ; use elpy (IDE for emacs)
 (package-initialize)
 (elpy-enable)
-(setq python-shell-interpreter "ipython"
-      python-shell-interpreter-args "-i --simple-prompt")
-;; ;;; needed for ipython 5.x and elpy (http://emacs.stackexchange.com/questions/24453/weird-shell-output-when-using-ipython-5)
-;; ;; (custom-set-variables
-;; ;;  '(python-shell-interpreter-args "--simple-prompt -i"))
-;; (setq python-shell-interpreter "ipython" python-shell-interpreter-args "--simple-prompt --pprint")
+
+;; jupyter console is recommended by elpy for interactive python
+;; prompt as of 4 May 2021:
+;; https://elpy.readthedocs.io/en/latest/ide.html#interpreter-setup
+;; The below setup code is taken directly from that link.  As of 4 May
+;; 2021, tab completion works out of the box using jupyter console,
+;; and does not work out of the box using ipython.
+(setq python-shell-interpreter "jupyter"
+      python-shell-interpreter-args "console --simple-prompt"
+      python-shell-prompt-detect-failure-warning nil)
+(add-to-list 'python-shell-completion-native-disabled-interpreters
+	     "jupyter")
 
 (define-key inferior-python-mode-map (kbd "C-c p") 'path-to-ospathjoin)
 (define-key python-mode-map (kbd "C-c p") 'path-to-ospathjoin)
@@ -23,7 +29,7 @@
   ;;3.7 added the builtin function breakpoint() as a convenience
   (interactive)
   (newline-and-indent)
-  (insert "breakpoint()")
+  (insert "import pdb; pdb.set_trace()")
 )
 
 (defun python-show-function-definitions ()
