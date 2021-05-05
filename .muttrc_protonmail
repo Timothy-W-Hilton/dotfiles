@@ -114,6 +114,10 @@ set query_command = "khard email --parsable %s"
 bind editor <Tab> complete-query
 bind editor ^T    complete
 
+macro index,pager A \
+"<pipe-message>khard add-email<return>" \
+"add the sender email address to khard"
+
 # the following from http://manpages.ubuntu.com/manpages/precise/man1/urlscan.1.html, https://superuser.com/questions/333862/how-do-i-open-a-link-from-an-email-in-mutt-without-using-the-mouse
 
 macro index,pager \cb "<pipe-message> urlscan<Enter>" "call urlview to extract URLs out of a message"
