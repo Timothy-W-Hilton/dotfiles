@@ -126,7 +126,9 @@ export WORK=$HOME/work
 export NERSCHOME=/Users/tim/work/NERSC_home/
 export NERSCSCRATCH=/Users/tim/work/NERSC_scratch/
 export PREVIEW=/Applications/Preview.app
-
+# needed to allow homebrew formulae to use mono -- probably
+# unecessary.  Mono is a dependency of duplicati.
+export MONO_GAC_PREFIX="/usr/local"
 # use solarized colors for ls
 eval `dircolors $HOME/Software/dircolors-solarized/dircolors.ansi-dark`
 
