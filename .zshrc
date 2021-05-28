@@ -170,3 +170,12 @@ alias mount_NERSC_project_cori='sshfs nersc_cori:/project/projectdirs/m2319 ~/wo
 alias mount_NERSC_home='sshfs nersc_cori:/global/homes/t/twhilton/ ~/work/NERSC_home -oauto_cache,reconnect,defer_permissions,noappledouble,nolocalcaches,no_readahead'
 alias mount_NERSC_scratch_cori='sshfs nersc_data_xfer:/global/cscratch1/sd/twhilton/ ~/work/NERSC_scratch -oauto_cache,reconnect,defer_permissions,noappledouble,nolocalcaches,no_readahead'
 #'sshfs nersc_cori:/global/homes/t/twhilton/ ~/work/NERSC_home -oauto_cache,reconnect,noappledouble'
+
+# for pyenv (see https://github.com/pyenv/pyenv)
+if command -v pyenv 1>/dev/null 2>&1; then
+   echo "settnig up pyenv"
+   eval "$(pyenv init -)"
+fi
+
+# Created by `pipx` on 2021-04-02 19:34:05
+export PATH="$PATH:/Users/tim/.local/bin"
