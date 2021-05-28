@@ -150,7 +150,7 @@ alias rsync='rsync --progress'
 alias linux_tower_firefox='ssh -YC4c arcfour,blowfish-cbc tim@linux_tower firefox -no-remote'
 alias yakyak="cd $HOME/Software/yakyak && npm run electron app &"
 alias diceware="gshuf --random-source=/dev/random -rn6 < $HOME/Documents/eff_large_wordlist.txt"
-alias nersc_ssh_generate_key="$HOME/Software/NERSC-MFA/sshproxy.sh -u twhilton"
+alias nersc_ssh_generate_key="$HOME/bin/nersc_mfa_sshproxy.sh -u twhilton"
 
 alias gbavv='git branch -a -vv'
 alias gdbw='git diff -b -w'
