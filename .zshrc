@@ -55,7 +55,8 @@ fi
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
+plugins=(git,
+	pyenv)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -171,11 +172,8 @@ alias mount_NERSC_home='sshfs nersc_cori:/global/homes/t/twhilton/ ~/work/NERSC_
 alias mount_NERSC_scratch_cori='sshfs nersc_data_xfer:/global/cscratch1/sd/twhilton/ ~/work/NERSC_scratch -oauto_cache,reconnect,defer_permissions,noappledouble,nolocalcaches,no_readahead'
 #'sshfs nersc_cori:/global/homes/t/twhilton/ ~/work/NERSC_home -oauto_cache,reconnect,noappledouble'
 
-# for pyenv (see https://github.com/pyenv/pyenv)
-if command -v pyenv 1>/dev/null 2>&1; then
-   echo "settnig up pyenv"
-   eval "$(pyenv init -)"
-fi
+# make sure pyenv shims are at the beginning of $PATH
+eval "$(pyenv init --path)"
 
 # Created by `pipx` on 2021-04-02 19:34:05
 export PATH="$PATH:/Users/tim/.local/bin"
