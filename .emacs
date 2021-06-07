@@ -4,6 +4,15 @@
 ;; strategy for separating .emacs into calls to smaller files adapted
 ;; from http://ergoemacs.org/emacs/organize_your_dot_emacs.html
 
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+;; (package-initialize)
+
+(add-to-list 'term-file-aliases
+	     '("screen.xterm-256color" . "xterm-256color"))
+
 ;; make sure packages are installed
 (load "~/.emacs.d/.user-init-packages.el")
 
@@ -21,17 +30,17 @@
 (load "~/.emacs.d/.tim_mac_specific.el")
 (load "~/.emacs.d/.tim_ido.el")
 (load "~/.emacs.d/.tim_mail.el")
-;;(load "~/.emacs.d/.tim_jabber.el")
+;; ;;(load "~/.emacs.d/.tim_jabber.el")
 (load "~/.emacs.d/.tim_magit.el")
 (load "~/.emacs.d/.tim_R_ess_config.el")
 (load "~/.emacs.d/.tim_tramp_config.el")
 (load "~/.emacs.d/.tim_LaTeX_config.el")
 (load "~/.emacs.d/.tim_python_config.el")
 (load "~/.emacs.d/.tim_org_mode_config.el")
-;;(load "~/.emacs.d/.tim_fortran_mode_config.el")
+;; ;;(load "~/.emacs.d/.tim_fortran_mode_config.el")
 (load "~/.emacs.d/.tim_markdown_mode_config.el")
-;; --------------------------------------------------
-;; key bindings
+;; ;; --------------------------------------------------
+;; ;; key bindings
 (load "~/.emacs.d/.tim_keybindings.el")
 
 ;; The below are thigns that Custom has added to my .emacs over the years.  For now I'm leaving it here because I have a feeling Custom would restore most of it over time if I tried to move it.
@@ -43,34 +52,32 @@
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector
    ["#3F3F3F" "#CC9393" "#7F9F7F" "#F0DFAF" "#8CD0D3" "#DC8CC3" "#93E0E3" "#DCDCCC"])
+ '(company-quickhelp-color-background "#4F4F4F")
+ '(company-quickhelp-color-foreground "#DCDCCC")
  '(custom-safe-themes
-   (quote
-    ("67e998c3c23fe24ed0fb92b9de75011b92f35d3e89344157ae0d544d50a63a72" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" "cbef37d6304f12fb789f5d80c2b75ea01465e41073c30341dc84c6c0d1eb611d" "9f443833deb3412a34d2d2c912247349d4bd1b09e0f5eaba11a3ea7872892000" default)))
+   '("0598c6a29e13e7112cfbc2f523e31927ab7dce56ebb2016b567e1eff6dc1fd4f" "67e998c3c23fe24ed0fb92b9de75011b92f35d3e89344157ae0d544d50a63a72" "8db4b03b9ae654d4a57804286eb3e332725c84d7cdab38463cb6b97d5762ad26" "cbef37d6304f12fb789f5d80c2b75ea01465e41073c30341dc84c6c0d1eb611d" "9f443833deb3412a34d2d2c912247349d4bd1b09e0f5eaba11a3ea7872892000" default))
  '(elpy-rpc-backend "rope")
  '(ess-roxy-template-alist
-   (quote
-    (("description" . ".. content for \\description{} (no empty lines) ..")
+   '(("description" . ".. content for \\description{} (no empty lines) ..")
      ("details" . ".. content for \\details{} ..")
      ("title" . "")
      ("param" . "")
      ("return" . "")
      ("author" . "Timothy W. Hilton")
-     ("export" . ""))))
+     ("export" . "")))
  '(fci-rule-color "#383838")
  '(frame-background-mode nil)
+ '(ido-case-fold t)
  '(inferior-R-args "--no-save --no-restore")
  '(nrepl-message-colors
-   (quote
-    ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
+   '("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3"))
  '(package-selected-packages
-   (quote
-    (ein solarized-theme pdf-tools zenburn-theme websocket visual-fill-column shell-switcher python-pylint python-mode pylint polymode pandoc-mode markdown-mode magit jedi-direx ipython idomenu f90-interface-browser exec-path-from-shell ess emojify elpy color-theme-solarized boxquote auctex)))
- '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
+   '(pdf-tools ag mutt-mode yaml-mode hide-lines nginx-mode gnu-elpa-keyring-update solarized-theme zenburn-theme websocket visual-fill-column shell-switcher python-pylint python-mode pylint polymode pandoc-mode markdown-mode magit jedi-direx ipython idomenu f90-interface-browser exec-path-from-shell ess emojify elpy color-theme-solarized boxquote auctex))
+ '(pdf-view-midnight-colors '("#DCDCCC" . "#383838"))
  '(post-rename-buffer nil)
  '(vc-annotate-background "#2B2B2B")
  '(vc-annotate-color-map
-   (quote
-    ((20 . "#BC8383")
+   '((20 . "#BC8383")
      (40 . "#CC9393")
      (60 . "#DFAF8F")
      (80 . "#D0BF8F")
@@ -87,7 +94,7 @@
      (300 . "#7CB8BB")
      (320 . "#8CD0D3")
      (340 . "#94BFF3")
-     (360 . "#DC8CC3"))))
+     (360 . "#DC8CC3")))
  '(vc-annotate-very-old-color "#DC8CC3"))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
