@@ -62,7 +62,6 @@
  '(nrepl-message-colors
    (quote
     ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
- '(org-replace-disputed-keys t)
  '(package-selected-packages
    (quote
     (ein solarized-theme pdf-tools zenburn-theme websocket visual-fill-column shell-switcher python-pylint python-mode pylint polymode pandoc-mode markdown-mode magit jedi-direx ipython idomenu f90-interface-browser exec-path-from-shell ess emojify elpy color-theme-solarized boxquote auctex)))
