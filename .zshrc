@@ -55,8 +55,7 @@ fi
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git,
-	pyenv)
+plugins=(git pyenv)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -177,3 +176,4 @@ eval "$(pyenv init --path)"
 
 # Created by `pipx` on 2021-04-02 19:34:05
 export PATH="$PATH:/Users/tim/.local/bin"
+eval "$(pyenv init -)"
