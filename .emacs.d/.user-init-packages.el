@@ -12,7 +12,6 @@
 			websocket
 			visual-fill-column
 			shell-switcher
-			python-pylint
 			python-mode
 			pylint
 			polymode
@@ -20,13 +19,11 @@
 			markdown-mode
 			magit
 			jedi-direx
-			ipython
 			idomenu
 			exec-path-from-shell
 			ess
 			emojify
 			elpy
-			color-theme-solarized
 			boxquote
 			auctex
 			nginx-mode
@@ -50,7 +47,7 @@
 (add-to-list 'package-archives
 	     '("melpa" . "http://www.mirrorservice.org/sites/melpa.org/packages/"))
 
-;;(package-initialize)
+(package-initialize)
 
 (when (not package-archive-contents)
   (package-refresh-contents))
@@ -71,7 +68,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (boxquote color-theme-solarized elpy emojify ess exec-path-from-shell idomenu ipython jedi-direx magit markdown-mode pandoc-mode pylint python-mode python-pylint shell-switcher visual-fill-column zenburn-theme pdf-tools solarized-theme ein))))
+    (boxquote color-theme-solarized elpy emojify ess exec-path-from-shell idomenu  jedi-direx magit markdown-mode pandoc-mode pylint python-mode  shell-switcher visual-fill-column zenburn-theme pdf-tools solarized-theme ein))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
