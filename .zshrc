@@ -12,6 +12,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
      function apt-get_history() {
           zcat /var/log/apt/history.log.*.gz | cat - /var/log/apt/history.log | grep -Po '^Commandline:(?= apt-get)(?=.* install ) \K.*' | sed '1,4d'
 	  }
+     alias panoply=/home/timh/Software/PanoplyJ/panoply.sh
 
 elif [[ "$OSTYPE" == "darwin"* ]]; then
      # Mac OSX
@@ -82,6 +83,11 @@ compinit -u
 autoload -U zmv
 zmodload zsh/stat
 
+function backup_to_GNS()
+{
+	echo "syncing local home to raukawa"
+	rsync -havu --progress --exclude-from=./.backup_exclude  /home/timh "raukawa:/home/timh"
+}
 
 function rsync_nersc()
 {
