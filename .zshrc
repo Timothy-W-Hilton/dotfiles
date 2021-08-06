@@ -9,6 +9,20 @@ ZSH_THEME="duellj"  #"blinks"
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
    # we're on a linux box
+   alias alu='apt list --upgradable'
+
+   function mount_GNS_scratch()
+   {
+      sudo mount hut-unix-nfs:/scratch /mnt/GNS_scratch
+   }
+
+   function backup_to_GNS()
+   {
+	echo "syncing local home to raukawa"
+	rsync -havu --progress --exclude-from=./.backup_exclude  /home/timh "raukawa:/home/timh"
+   }
+
+
      function apt-get_history() {
           zcat /var/log/apt/history.log.*.gz | cat - /var/log/apt/history.log | grep -Po '^Commandline:(?= apt-get)(?=.* install ) \K.*' | sed '1,4d'
 	  }
@@ -82,12 +96,6 @@ compinit -u
 
 autoload -U zmv
 zmodload zsh/stat
-
-function backup_to_GNS()
-{
-	echo "syncing local home to raukawa"
-	rsync -havu --progress --exclude-from=./.backup_exclude  /home/timh "raukawa:/home/timh"
-}
 
 function rsync_nersc()
 {
