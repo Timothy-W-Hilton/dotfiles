@@ -16,10 +16,20 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
       sudo mount hut-unix-nfs:/scratch /mnt/GNS_scratch
    }
 
-   function backup_to_GNS()
+   function mount_GNS_amp()
    {
-	echo "syncing local home to raukawa"
-	rsync -havu --progress --exclude-from=./.backup_exclude  /home/timh "raukawa:/home/timh"
+      sudo mount hut-unix-nfs:/amp /mnt/amp
+   }
+
+
+   function backup_to_GNS()
+   # backup /home/timh to raukawa.gns.cri.nz
+   #
+   # $@ passes flags from the command line through - useful for
+   # running with a "-n" to do a dry run
+   {
+	echo "syncing local home to raukawa.  flags: $@"
+	rsync "$@" -havu --progress --delete --exclude-from=$HOME/.backup_exclude  /home/timh "raukawa:/home/timh"
    }
 
 
