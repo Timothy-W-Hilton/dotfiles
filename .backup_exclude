@@ -1,0 +1,10 @@
+dotfiles/***
+Software/***
+.cache/***
+.pyenv/***
+.venv_general/***
+*venv*/***
+.ssh/***
+*~
+image.dd
+*testenv/***

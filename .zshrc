@@ -32,6 +32,17 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 	rsync "$@" -Shavu --sparse --progress --delete-after --delete-excluded --exclude-from=$HOME/.backup_exclude --filter='protect .ssh' --filter='protect .backup_raukawa.log' --log-file=$HOME/.backup_log --log-file-format='%i %n%L %o' --remote-option=--log-file=/home/timh/.backup_raukawa.log /home/timh/ "raukawa:/home/timh"
    }
 
+   function backup_to_GNS_minimal()
+   # backup /home/timh/Documents and /home/timh/Code to raukawa.gns.cri.nz
+   #
+   # $@ passes flags from the command line through - useful for
+   # running with a "-n" to do a dry run
+   {
+	echo "syncing local ~/Documents/ and ~/Code/ to raukawa.  flags: $@"
+	rsync "$@" -Shavu --sparse --progress --delete-after --delete-excluded --exclude-from=$HOME/.backup_exclude --filter='protect .ssh' --filter='protect .backup_raukawa.log' --log-file=$HOME/.backup_log --log-file-format='%i %n%L %o' --remote-option=--log-file=/home/timh/.backup_raukawa.log /home/timh/Documents/ "raukawa:/home/timh/Documents"
+	rsync "$@" -Shavu --sparse --progress --delete-after --delete-excluded --exclude-from=$HOME/.backup_exclude --filter='protect .ssh' --filter='protect .backup_raukawa.log' --log-file=$HOME/.backup_log --log-file-format='%i %n%L %o' --remote-option=--log-file=/home/timh/.backup_raukawa.log /home/timh/Code/ "raukawa:/home/timh/Code"
+   }
+
 
      function apt-get_history() {
           zcat /var/log/apt/history.log.*.gz | cat - /var/log/apt/history.log | grep -Po '^Commandline:(?= apt-get)(?=.* install ) \K.*' | sed '1,4d'
