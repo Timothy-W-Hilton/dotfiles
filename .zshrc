@@ -169,6 +169,7 @@ eval `dircolors $HOME/Software/dircolors-solarized/dircolors.ansi-dark`
 
 # alias emacs='/usr/local/Cellar/emacs/24.3/Emacs.app/Contents/MacOS/Emacs'
 
+alias restart_gnome='/etc/init.d/gdm3 restart'
 alias sr='screen -r '
 alias srd='screen -DR'
 alias sls='screen -ls'
