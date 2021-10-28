@@ -48,7 +48,10 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
           zcat /var/log/apt/history.log.*.gz | cat - /var/log/apt/history.log | grep -Po '^Commandline:(?= apt-get)(?=.* install ) \K.*' | sed '1,4d'
 	  }
      alias panoply=/home/timh/Software/PanoplyJ/panoply.sh
-
+     alias open='xdg-open'
+     alias mount_GNS_I='sudo mount -t cifs -o user=timh,domain=gns //corp.gns.cri.nz/gnsshared /mnt/Idrive'
+     alias mount_GNS_J='sudo mount -t cifs -o user=timh,domain=gns //corp.gns.cri.nz/gnsfiles /mnt/Jdrive'
+     alias mount_GNS_K='sudo mount -t cifs -o user=timh,domain=gns //hut-win-smb/scratch /mnt/Kdrive'
 elif [[ "$OSTYPE" == "darwin"* ]]; then
      # Mac OSX
      alias dircolors='gdircolors'
