@@ -5,8 +5,7 @@
 ;;
 
 (require 'package)
-(defvar user-packages '(ein
-			solarized-theme
+(defvar user-packages '(solarized-theme
 			pdf-tools
 			zenburn-theme
 			websocket
@@ -47,8 +46,6 @@
 (add-to-list 'package-archives
 	     '("melpa" . "http://www.mirrorservice.org/sites/melpa.org/packages/"))
 
-(package-initialize)
-
 (when (not package-archive-contents)
   (package-refresh-contents))
 
@@ -68,7 +65,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (boxquote color-theme-solarized elpy emojify ess exec-path-from-shell idomenu  jedi-direx magit markdown-mode pandoc-mode pylint python-mode  shell-switcher visual-fill-column zenburn-theme pdf-tools solarized-theme ein))))
+    (boxquote color-theme-solarized elpy emojify ess exec-path-from-shell idomenu  jedi-direx magit markdown-mode pandoc-mode pylint python-mode  shell-switcher visual-fill-column zenburn-theme pdf-tools solarized-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
