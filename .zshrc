@@ -29,7 +29,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
    # running with a "-n" to do a dry run
    {
 	echo "syncing local home to raukawa.  flags: $@"
-	rsync "$@" -Shavu --sparse --progress --delete-after --delete-excluded --exclude-from=$HOME/.backup_exclude --filter='protect .ssh' --filter='protect .backup_raukawa.log' --log-file=$HOME/.backup_log --log-file-format='%i %n%L %o' --remote-option=--log-file=/home/timh/.backup_raukawa.log /home/timh/ "raukawa:/home/timh"
+	rsync "$@" -Shavu --sparse --progress --delete-after --delete-excluded --exclude-from=$HOME/.backup_exclude --filter='protect .ssh' --filter='protect .backup_raukawa.log' --log-file=$HOME/.backup_log --log-file-format='%i %n%L %o' --remote-option=--log-file=/home/timh/.backup_raukawa.log /home/timh/ "raukawa:/home/timh/laptop_backup"
    }
 
    function backup_to_GNS_minimal()
