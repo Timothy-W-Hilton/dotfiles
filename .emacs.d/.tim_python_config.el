@@ -30,6 +30,10 @@
 (define-key inferior-python-mode-map (kbd "C-c p") 'path-to-ospathjoin)
 (define-key python-mode-map (kbd "C-c p") 'path-to-ospathjoin)
 
+; added TWH 13 Oct 2021
+; see https://github.com/jorgenschaefer/elpy/issues/1749
+(add-to-list 'process-coding-system-alist '("python" . (utf-8 . utf-8)))
+
   ;; from NickD answer at https://emacs.stackexchange.com/questions/61936/from-one-line-list-to-one-element-per-line-in-python-mode
 (defun python-list-break-and-indent ()
   "Convert a single-line list into a block list, indented properly. ASSUMPTION: the only occurrences of the string \", \" are between list elements."
@@ -40,10 +44,6 @@
         (newline))
       (end-of-line)
       (indent-region beg (point)))))
-
-(define-key python-mode-map (kbd "C-c b") #'python-list-break-and-indent)
-(define-key python-mode-map (kbd "C-c t") 'transpose-frame)
-(define-key inferior-python-mode-map (kbd "C-c t") 'transpose-frame)
 
 (defun python-insert-breakpoint ()
   "insert 'breakpoint()' on a new line following point."
