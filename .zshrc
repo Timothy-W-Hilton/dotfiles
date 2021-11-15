@@ -39,8 +39,8 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
    # running with a "-n" to do a dry run
    {
 	echo "syncing local ~/Documents/ and ~/Code/ to raukawa.  flags: $@"
-	rsync "$@" -Shavu --sparse --progress --delete-after --delete-excluded --exclude-from=$HOME/.backup_exclude --filter='protect .ssh' --filter='protect .backup_raukawa.log' --log-file=$HOME/.backup_log --log-file-format='%i %n%L %o' --remote-option=--log-file=/home/timh/.backup_raukawa.log /home/timh/Documents/ "raukawa:/home/timh/Documents"
-	rsync "$@" -Shavu --sparse --progress --delete-after --delete-excluded --exclude-from=$HOME/.backup_exclude --filter='protect .ssh' --filter='protect .backup_raukawa.log' --log-file=$HOME/.backup_log --log-file-format='%i %n%L %o' --remote-option=--log-file=/home/timh/.backup_raukawa.log /home/timh/Code/ "raukawa:/home/timh/Code"
+	rsync "$@" -Shavu --sparse --progress --delete-after --delete-excluded --exclude-from=$HOME/.backup_exclude --filter='protect .ssh' --filter='protect .backup_raukawa.log' --log-file=$HOME/.backup_log --log-file-format='%i %n%L %o' --remote-option=--log-file=/home/timh/.backup_raukawa.log /home/timh/Documents/ "raukawa:/home/timh/laptop_backup/Documents"
+	rsync "$@" -Shavu --sparse --progress --delete-after --delete-excluded --exclude-from=$HOME/.backup_exclude --filter='protect .ssh' --filter='protect .backup_raukawa.log' --log-file=$HOME/.backup_log --log-file-format='%i %n%L %o' --remote-option=--log-file=/home/timh/.backup_raukawa.log /home/timh/Code/ "raukawa:/home/timh/laptop_backup/Code"
    }
 
 
