@@ -11,6 +11,19 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
    # we're on a linux box
    alias alu='apt list --upgradable'
 
+
+   function sshfs_GNS_scratch()
+   {
+      sshfs -o idmap=user $USER@raukawa:/scratch ~/mnt/scratch
+      echo "to unmount use: fusermount -u ~/scratch"
+   }
+
+   function sshfs_GNS_amp()
+   {
+      sshfs -o idmap=user $USER@raukawa:/amp ~/mnt/amp
+      echo "to unmount use: fusermount -u ~/amp"
+   }
+
    function mount_GNS_scratch()
    {
       sudo mount hut-unix-nfs:/scratch /mnt/GNS_scratch
