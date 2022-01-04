@@ -7,7 +7,6 @@
 ;;==============================================================
 (load-theme 'zenburn 1)
 
-
 ;;==============================================================
 ;;==============================================================
 ;; don't open GUI windows!
@@ -43,9 +42,9 @@
 ;;==============================================================
 ;;==============================================================
 
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/elpa/auto-complete/dict")
-(ac-config-default)
+;; (require 'auto-complete-config)
+;; (add-to-list 'ac-dictionary-directories "~/.emacs.d/elpa/auto-complete/dict")
+;; (ac-config-default)
 
 ;;(require 'shell-switcher)  ;TODO do I still want this?
 
