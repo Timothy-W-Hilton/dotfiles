@@ -17,7 +17,6 @@
 			pandoc-mode
 			markdown-mode
 			magit
-			jedi-direx
 			idomenu
 			exec-path-from-shell
 			ess
@@ -65,7 +64,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (boxquote color-theme-solarized elpy emojify ess exec-path-from-shell idomenu  jedi-direx magit markdown-mode pandoc-mode pylint python-mode  shell-switcher visual-fill-column zenburn-theme pdf-tools solarized-theme))))
+    (boxquote color-theme-solarized elpy emojify ess exec-path-from-shell idomenu magit markdown-mode pandoc-mode pylint python-mode  shell-switcher visual-fill-column zenburn-theme pdf-tools solarized-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
