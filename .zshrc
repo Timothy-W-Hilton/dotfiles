@@ -15,13 +15,13 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
    function sshfs_GNS_scratch()
    {
       sshfs -o idmap=user $USER@raukawa:/scratch ~/mnt/scratch
-      echo "to unmount use: fusermount -u ~/scratch"
+      echo "to unmount use: fusermount -u ~/mnt/scratch"
    }
 
    function sshfs_GNS_amp()
    {
       sshfs -o idmap=user $USER@raukawa:/amp ~/mnt/amp
-      echo "to unmount use: fusermount -u ~/amp"
+      echo "to unmount use: fusermount -u ~/mnt/amp"
    }
 
    function mount_GNS_scratch()
