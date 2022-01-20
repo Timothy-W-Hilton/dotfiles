@@ -11,6 +11,11 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
    # we're on a linux box
    alias alu='apt list --upgradable'
 
+   function ccycle_bibliography_update()
+   {
+      pandoc --filter=pandoc-citeproc --standalone $HOME/Documents/CCycleBibliography/CCycleBibliography.md -o $HOME/Documents/CCycleBibliography/CCycleBibliography.html
+      echo "wrote $HOME/Documents/CCycleBibliography/CCycleBibliography.html"
+   }
 
    function sshfs_GNS_scratch()
    {
