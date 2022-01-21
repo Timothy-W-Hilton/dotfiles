@@ -80,3 +80,16 @@
 
 	    )
 	  )
+
+;; include braces around certain expressions in titles in tasks
+;; performed by bibtex-clean-entry
+(setq bibtex-entry-format '(opts-or-alts required-fields numerical-fields braces))
+;; regexps to enclose in braces (to preserve capitalization) in bibtex titles
+(setq bibtex-field-braces-alist
+      '((("title") "CH\\(4\\|\\$_4\\$\\)?")  ;; match CH4 or CH$_4$
+	(("title") "NO[x2]")
+	(("title") "CO\\(2\\|\\$2\\$\\)?")  ;; match CO2 or CO$_2$
+	(("title") "Asia")
+	(("title") "Europe")
+	(("title") "America")
+	))
