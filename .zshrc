@@ -13,7 +13,8 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
    function ccycle_bibliography_update()
    {
-      pandoc --filter=pandoc-citeproc --standalone $HOME/Documents/CCycleBibliography/CCycleBibliography.md -o $HOME/Documents/CCycleBibliography/CCycleBibliography.html
+      cd $HOME/Documents/CCycleBibliography
+      pandoc --filter=pandoc-citeproc --standalone $HOME/Documents/CCycleBibliography/CCycleBibliography.md -o $HOME/Documents/CCycleBibliography/CCycleBibliography.html  --metadata pagetitle="CCycle Bibliography"
       echo "wrote $HOME/Documents/CCycleBibliography/CCycleBibliography.html"
    }
 
