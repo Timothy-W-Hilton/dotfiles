@@ -4,7 +4,7 @@
 ;; (require 'python-mode)
 ;;(require 'ein)
 
-;; ; use elpy (IDE for emacs)
+; use elpy (IDE for emacs)
 (package-initialize)
 (elpy-enable)
 
@@ -33,6 +33,20 @@
 ; added TWH 13 Oct 2021
 ; see https://github.com/jorgenschaefer/elpy/issues/1749
 (add-to-list 'process-coding-system-alist '("python" . (utf-8 . utf-8)))
+
+;; added TWH 7 Mar 2022
+;; force jupyter console to use an interactive matplotlib backend.
+;; This resolves matplotlib figures opening in imagemagick unless
+;; '%pylab' or '%matplotlib' is issued
+;; https://github.com/jorgenschaefer/elpy/issues/1769#issuecomment-607479044
+(defun elpy-shell--use-interactive-plots-in-jupyter ()
+  "Make sure we use an interactive backend with Jupyter"
+  (when (not (null (string-match "jupyter" python-shell-interpreter)))
+    (let ((process (python-shell-get-process)))
+      (python-shell-send-string-no-output "%matplotlib")
+      process)))
+(add-hook 'python-shell-first-prompt-hook 'elpy-shell--use-interactive-plots-in-jupyter t)
+
 
   ;; from NickD answer at https://emacs.stackexchange.com/questions/61936/from-one-line-list-to-one-element-per-line-in-python-mode
 (defun python-list-break-and-indent ()
