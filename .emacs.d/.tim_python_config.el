@@ -8,6 +8,14 @@
 (package-initialize)
 (elpy-enable)
 
+(add-hook 'python-mode-hook
+          (lambda ()
+            ;; explicitly load company for the occasion when the deferred
+            ;; loading with use-package hasn't kicked in yet
+            (company-mode)
+            (add-to-list 'company-backends
+                         (company-mode/backend-with-yas 'elpy-company-backend))))
+
 ;; (use-package elpy
 ;;   :ensure t
 ;;   :init
@@ -46,7 +54,6 @@
       (python-shell-send-string-no-output "%matplotlib")
       process)))
 (add-hook 'python-shell-first-prompt-hook 'elpy-shell--use-interactive-plots-in-jupyter t)
-
 
   ;; from NickD answer at https://emacs.stackexchange.com/questions/61936/from-one-line-list-to-one-element-per-line-in-python-mode
 (defun python-list-break-and-indent ()

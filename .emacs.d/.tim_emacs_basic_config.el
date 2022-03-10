@@ -42,11 +42,16 @@
 ;;==============================================================
 ;;==============================================================
 
-;; (require 'auto-complete-config)
-;; (add-to-list 'ac-dictionary-directories "~/.emacs.d/elpa/auto-complete/dict")
-;; (ac-config-default)
-
-;;(require 'shell-switcher)  ;TODO do I still want this?
+(add-hook 'after-init-hook 'global-company-mode)
+;; set default `company-backends'
+(setq company-backends
+      '((company-files          ; files & directory
+         company-keywords       ; keywords
+         company-capf
+         company-yasnippet
+         )
+        (company-abbrev company-dabbrev)
+        ))
 
 ;;==============================================================
 ;;==============================================================
@@ -66,8 +71,11 @@
 
 (column-number-mode 1)
 
-(set-face-attribute 'default nil
-		    :family "Monaco" :height 130 :weight 'normal)
+;; (set-face-attribute 'default nil
+;; 		    :family "Monaco" :height 130 :weight 'normal)
+(add-to-list 'default-frame-alist
+             '(font . "DejaVu Sans Mono-13"))
+
 (global-font-lock-mode 1)
 (transient-mark-mode 1)
 (show-paren-mode 1) (require 'paren)

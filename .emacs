@@ -14,7 +14,7 @@
 	     '("screen.xterm-256color" . "xterm-256color"))
 
 ;; make sure packages are installed
-;;(load "~/.emacs.d/.user-init-packages.el")
+(load "~/.emacs.d/.user-init-packages.el")
 
 ;; basic configuration (obviously :) )
 (load "~/.emacs.d/.tim_emacs_basic_config.el")
@@ -145,7 +145,7 @@
 
 ;; (set-frame-font "Liberation Mono-14:antialias=1" nil t)
 ;; (set-frame-font "Inconsolata-14:antialias=1" nil t)
-(set-frame-font "mono:antialias=1" nil t)
+;; (set-frame-font "mono:antialias=1" nil t)
 (put 'dired-find-alternate-file 'disabled nil)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -153,9 +153,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("3b8284e207ff93dfc5e5ada8b7b00a3305351a3fb222782d8033a400a48eca48" default))
+   '("fee7287586b17efbfda432f05539b58e86e059e78006ce9237b8732fde991b4c" "4c56af497ddf0e30f65a7232a8ee21b3d62a8c332c6b268c81e9ea99b11da0d3" "3b8284e207ff93dfc5e5ada8b7b00a3305351a3fb222782d8033a400a48eca48" default))
+ '(elpy-rpc-virtualenv-path 'current)
  '(org-agenda-files
-   '("~/Documents/ResearchJournal/2022_Research_Journal.org" "~/Documents/ResearchJournal/2021_ResearchJournal.org"))
+   '("~/Documents/ResearchJournal/2022_ResearchJournal.org" "~/Documents/ResearchJournal/2021_ResearchJournal.org"))
  '(package-selected-packages
    '(zenburn-theme yaml-mode websocket visual-fill-column transpose-frame solarized-theme shell-switcher python-mode pylint polymode pdf-tools pandoc-mode nginx-mode markdown-mode magit json-mode idomenu hide-lines exec-path-from-shell ess emojify elpy boxquote auctex ag)))
 (custom-set-faces
