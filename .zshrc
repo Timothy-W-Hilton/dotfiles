@@ -88,9 +88,21 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
      # running with a "-n" to do a dry run
      {
 	     echo "syncing local $HOME to Tim_externalHD.  flags: $@"
-	     rsync "$@" -Shavu --sparse --progress --delete-after --delete-excluded --exclude-from=$HOME/.backup_exclude --filter='protect .ssh' --filter='protect .backup_raukawa.log' --log-file=$HOME/.backup_log --log-file-format='%i %n%L %o' /Users/tim/Documents "/Volumes/Tim_externalHD/macbook_rsync_backup"
-
+	     rsync "$@" -Shavu \
+             --sparse \
+             --progress \
+             --delete-after \
+             --delete-excluded \
+             --include='Library/texmf/**'
+             --exclude-from=$HOME/.backup_exclude \
+             --filter='protect .ssh' \
+             --filter='protect .backup_raukawa.log' \
+             --log-file=$HOME/.backup_log \
+             --log-file-format='%i %n%L %o' \
+             /Users/tim/ \
+             /Volumes/Tim_externalHD/macbook_rsync_backup
      }
+
 fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
