@@ -79,6 +79,18 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
      export SCREENRC=.screenrc_mac
      alias backup_database='rsync -havu --progress AWS_chatbot:/home/deploy/app/Data/meditation_users.db $HOME/Documents'
      alias remove_known_host='ssh-keygen -f "/Users/tim/.ssh/known_hosts" -R'
+
+
+     function backup_macbook()
+     # backup /Users/tim /Volumes/Tim_externalHD/
+     #
+     # $@ passes flags from the command line through - useful for
+     # running with a "-n" to do a dry run
+     {
+	     echo "syncing local $HOME to Tim_externalHD.  flags: $@"
+	     rsync "$@" -Shavu --sparse --progress --delete-after --delete-excluded --exclude-from=$HOME/.backup_exclude --filter='protect .ssh' --filter='protect .backup_raukawa.log' --log-file=$HOME/.backup_log --log-file-format='%i %n%L %o' /Users/tim/Documents "/Volumes/Tim_externalHD/macbook_rsync_backup"
+
+     }
 fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
