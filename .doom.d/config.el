@@ -97,3 +97,11 @@
   (setq python-black-extra-args '("--preview"))  ; --preview includes wrapping long strings 2022-03-24
                                                ; must be a list of strings https://github.com/wbolster/emacs-python-black/issues/7
   )
+
+;; see https://github.com/hlissner/doom-emacs/issues/4178
+(setq mac-command-modifier      'super
+      ns-command-modifier       'super
+      mac-option-modifier       'meta
+      ns-option-modifier        'meta
+      mac-right-option-modifier 'meta
+      ns-right-option-modifier  'meta)
