@@ -105,3 +105,6 @@
       ns-option-modifier        'meta
       mac-right-option-modifier 'meta
       ns-right-option-modifier  'meta)
+
+;;
+(setq org-agenda-files '("~/Documents/ResearchJournal"))
