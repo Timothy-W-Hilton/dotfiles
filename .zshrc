@@ -62,23 +62,25 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 	rsync "$@" -Shavu --sparse --progress --delete-after --delete-excluded --exclude-from=$HOME/.backup_exclude --filter='protect .ssh' --filter='protect .backup_raukawa.log' --log-file=$HOME/.backup_log --log-file-format='%i %n%L %o' --remote-option=--log-file=/home/timh/.backup_raukawa.log /home/timh/Code/ "raukawa:/home/timh/laptop_backup/Code"
    }
 
+   function apt-get_history() {
+       zcat /var/log/apt/history.log.*.gz | cat - /var/log/apt/history.log | grep -Po '^Commandline:(?= apt-get)(?=.* install ) \K.*' | sed '1,4d'
+   }
 
-     function apt-get_history() {
-          zcat /var/log/apt/history.log.*.gz | cat - /var/log/apt/history.log | grep -Po '^Commandline:(?= apt-get)(?=.* install ) \K.*' | sed '1,4d'
-	  }
-     alias panoply=/home/timh/Software/PanoplyJ/panoply.sh
-     alias open='xdg-open'
-     alias mount_GNS_I='sudo mount -t cifs -o user=timh,domain=gns //corp.gns.cri.nz/gnsshared /mnt/Idrive'
-     alias mount_GNS_J='sudo mount -t cifs -o user=timh,domain=gns //corp.gns.cri.nz/gnsfiles /mnt/Jdrive'
-     alias mount_GNS_K='sudo mount -t cifs -o user=timh,domain=gns //hut-win-smb/scratch /mnt/Kdrive'
+   # suggestion from Ray Vercoelen email <2021-09-27 14:13>for dealing with DNS problems on the GNS VPN.
+   alias setup_GNS_VPN_DNS='sudo resolvectl dns vpn 161.65.38.65 161.65.44.65 && resolvectl domain vpn gns.cri.nz corp.gns.cri.nz geonet.org.nz'
+   alias panoply=/home/timh/Software/PanoplyJ/panoply.sh
+   alias open='xdg-open'
+   alias mount_GNS_I='sudo mount -t cifs -o user=timh,domain=gns //corp.gns.cri.nz/gnsshared /mnt/Idrive'
+   alias mount_GNS_J='sudo mount -t cifs -o user=timh,domain=gns //corp.gns.cri.nz/gnsfiles /mnt/Jdrive'
+   alias mount_GNS_K='sudo mount -t cifs -o user=timh,domain=gns //hut-win-smb/scratch /mnt/Kdrive'
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-     # Mac OSX
-     alias dircolors='gdircolors'
-     alias ls='gls --color=always'
-     alias clear_clipboard='pbcopy < /dev/null'
-     export SCREENRC=.screenrc_mac
-     alias backup_database='rsync -havu --progress AWS_chatbot:/home/deploy/app/Data/meditation_users.db $HOME/Documents'
-     alias remove_known_host='ssh-keygen -f "/Users/tim/.ssh/known_hosts" -R'
+   # Mac OSX
+   alias dircolors='gdircolors'
+   alias ls='gls --color=always'
+   alias clear_clipboard='pbcopy < /dev/null'
+   export SCREENRC=.screenrc_mac
+   alias backup_database='rsync -havu --progress AWS_chatbot:/home/deploy/app/Data/meditation_users.db $HOME/Documents'
+   alias remove_known_host='ssh-keygen -f "/Users/tim/.ssh/known_hosts" -R'
 fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
