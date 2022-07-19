@@ -5,7 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="duellj"  #"blinks"
+ZSH_THEME="tim"  #"blinks"
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
    # we're on a linux box
@@ -112,10 +112,12 @@ fi
 # much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
+fpath+=/home/timh/Software/conda-zsh-completion
+
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git pyenv)
+plugins=(git conda-zsh-completion conda)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -232,8 +234,25 @@ alias mount_NERSC_scratch_cori='sshfs nersc_data_xfer:/global/cscratch1/sd/twhil
 #'sshfs nersc_cori:/global/homes/t/twhilton/ ~/work/NERSC_home -oauto_cache,reconnect,noappledouble'
 
 # make sure pyenv shims are at the beginning of $PATH
-eval "$(pyenv init --path)"
+# eval "$(pyenv init --path)"
+# eval "$(pyenv init -)"
 
-# Created by `pipx` on 2021-04-02 19:34:05
-export PATH="$PATH:/Users/tim/.local/bin"
-eval "$(pyenv init -)"
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/timh/mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/timh/mambaforge/etc/profile.d/conda.sh" ]; then
+        . "/home/timh/mambaforge/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/timh/mambaforge/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+
+if [ -f "/home/timh/mambaforge/etc/profile.d/mamba.sh" ]; then
+    . "/home/timh/mambaforge/etc/profile.d/mamba.sh"
+fi
+# <<< conda initialize <<<
+
