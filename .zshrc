@@ -20,7 +20,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
    function sshfs_GNS_scratch()
    {
-      sshfs -o idmap=user $USER@raukawa:/scratch ~/mnt/scratch
+      sshfs -o idmap=user $USER@raukawa:/scratch/ ~/mnt/scratch/
       echo "to unmount use: fusermount -u ~/mnt/scratch"
    }
 
@@ -29,17 +29,6 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
       sshfs -o idmap=user $USER@raukawa:/amp ~/mnt/amp
       echo "to unmount use: fusermount -u ~/mnt/amp"
    }
-
-   function mount_GNS_scratch()
-   {
-      sudo mount hut-unix-nfs:/scratch /mnt/GNS_scratch
-   }
-
-   function mount_GNS_amp()
-   {
-      sudo mount hut-unix-nfs:/amp /mnt/amp
-   }
-
 
    function backup_to_GNS()
    # backup /home/timh to raukawa.gns.cri.nz
