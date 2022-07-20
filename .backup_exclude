@@ -1,3 +1,4 @@
+.aws/***
 dotfiles/***
 Software/***
 .cache/***
@@ -8,3 +9,6 @@ Software/***
 *~
 image.dd
 *testenv/***
+.local/share/Trash
+.local/share/RecentDocuments
+mnt/***
