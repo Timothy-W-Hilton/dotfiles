@@ -166,6 +166,7 @@ function kill_nersc_ssh()
 bindkey '^R' history-incremental-pattern-search-backward
 
 # set some environment variables
+export WORKON_HOME=~/mambaforge/envs/   # for pyvenv-workon in emacs  https://github.com/jorgenschaefer/pyvenv
 export BIBINPUTS=~/Library/texmf/bibtex/bib/
 export BSTINPUTS=~/Library/texmf/bibtex/bst/
 export PATH=/Library/TeX/texbin:$HOME/bin:/usr/local/bin:$PATH
