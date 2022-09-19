@@ -79,6 +79,9 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+;; https://emacs-lsp.github.io/lsp-mode/page/faq/#how-do-i-force-lsp-mode-to-forget-the-workspace-folders-for-multi-root
+(advice-add 'lsp :before (lambda (&rest _args) (eval '(setf (lsp-session-server-id->folders (lsp-session)) (ht)))))
+
 (after! python
   (setq python-shell-interpreter "jupyter"
         python-shell-interpreter-args "console --simple-prompt"
@@ -109,3 +112,7 @@
 
 ;;
 (setq org-agenda-files '("~/Documents/ResearchJournal"))
+
+;; use "smart assign" in ESS mode
+(define-key ess-mode-map (kbd "_") 'ess-insert-assign)
+(define-key inferior-ess-mode-map (kbd "_") 'ess-insert-assign)
