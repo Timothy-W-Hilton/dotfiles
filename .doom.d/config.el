@@ -114,5 +114,10 @@
 (setq org-agenda-files '("~/Documents/ResearchJournal"))
 
 ;; use "smart assign" in ESS mode
-(define-key ess-mode-map (kbd "_") 'ess-insert-assign)
-(define-key inferior-ess-mode-map (kbd "_") 'ess-insert-assign)
+;; https://discourse.doomemacs.org/t/how-to-re-bind-keys/56
+(map! :after ess
+      :map ess-mode-map
+      "_" #'ess-insert-assign)
+(map! :after ess
+      :map inferior-ess-mode-map
+      "_" #'ess-insert-assign)
