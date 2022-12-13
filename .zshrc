@@ -59,8 +59,8 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
    alias setup_GNS_VPN_DNS='sudo resolvectl dns vpn 161.65.38.65 161.65.44.65 && resolvectl domain vpn gns.cri.nz corp.gns.cri.nz geonet.org.nz'
    alias panoply=/home/timh/Software/PanoplyJ/panoply.sh
    alias open='xdg-open'
-   alias mount_GNS_I='sudo mount -t cifs -o user=timh,domain=gns //corp.gns.cri.nz/gnsshared /mnt/Idrive'
-   alias mount_GNS_J='sudo mount -t cifs -o user=timh,domain=gns //corp.gns.cri.nz/gnsfiles /mnt/Jdrive'
+   alias mount_GNS_I='sudo mount -t cifs -o user=timh,domain=gns //hut-win-smb.corp.gns.cri.nz/gnsshared$  /mnt/Idrive'
+   alias mount_GNS_J='sudo mount -t cifs -o user=timh,domain=gns  //hut-win-smb.corp.gns.cri.nz/gnsfiles$  /mnt/Jdrive'
    alias mount_GNS_K='sudo mount -t cifs -o user=timh,domain=gns //hut-win-smb/scratch /mnt/Kdrive'
 elif [[ "$OSTYPE" == "darwin"* ]]; then
    # Mac OSX
