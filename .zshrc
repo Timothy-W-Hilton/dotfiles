@@ -210,18 +210,6 @@ alias glola10="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Cre
 
 # "--color=always" causes grep not to disable color output when writing to a pipe.
 alias cgrep='grep --color=always'
-#alias rdesktop_jemez='rdesktop -u Tim 129.24.144.165 -r clipboard:PRIMARYCLIPBOARD -g 100% -KD'
-#noappledouble prevents OSX from writing .DS_Store files on remote system
-alias mount_ecampbell_plots='sshfs -p 22 campbell_lab:/home/thilton/Plots/ ~/ecampbell300_plots -oauto_cache,reconnect,noappledouble'
-alias mount_ecampbell_home='sshfs -p 22 campbell_lab:/home/thilton/ ~/work/ecampbell300_Home -oauto_cache,reconnect,noappledouble'
-alias mount_workaround='sshfs -p 22 workaround:/home/ecampbell_lab/ ~/work/workaround -oauto_cache,reconnect,noappledouble'
-#alias mount_NERSC_home='sshfs -p 22 hopper:/global/homes/t/twhilton/ ~/work/NERSC_home -oauto_cache,reconnect,noappledouble,follow_symlinks'
-alias mount_NERSC_home_edison='sshfs nersc_edison:/global/homes/t/twhilton/ ~/work/NERSC_home -oauto_cache,reconnect,defer_permissions,noappledouble,nolocalcaches,no_readahead'
-alias mount_NERSC_project_edison='sshfs nersc_edison:/project/projectdirs/m2319 ~/work/NERSC_Project -oauto_cache,reconnect,defer_permissions,noappledouble,nolocalcaches,no_readahead'
-alias mount_NERSC_project_cori='sshfs nersc_cori:/project/projectdirs/m2319 ~/work/NERSC_Project -oauto_cache,reconnect,defer_permissions,noappledouble,nolocalcaches,no_readahead'
-alias mount_NERSC_home='sshfs nersc_cori:/global/homes/t/twhilton/ ~/work/NERSC_home -oauto_cache,reconnect,defer_permissions,noappledouble,nolocalcaches,no_readahead'
-alias mount_NERSC_scratch_cori='sshfs nersc_data_xfer:/global/cscratch1/sd/twhilton/ ~/work/NERSC_scratch -oauto_cache,reconnect,defer_permissions,noappledouble,nolocalcaches,no_readahead'
-#'sshfs nersc_cori:/global/homes/t/twhilton/ ~/work/NERSC_home -oauto_cache,reconnect,noappledouble'
 
 # make sure pyenv shims are at the beginning of $PATH
 # eval "$(pyenv init --path)"
