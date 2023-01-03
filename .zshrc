@@ -63,6 +63,8 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
    alias mount_GNS_I='sudo mount -t cifs -o user=timh,domain=gns //hut-win-smb.corp.gns.cri.nz/gnsshared$  /mnt/Idrive'
    alias mount_GNS_J='sudo mount -t cifs -o user=timh,domain=gns  //hut-win-smb.corp.gns.cri.nz/gnsfiles$  /mnt/Jdrive'
    alias mount_GNS_K='sudo mount -t cifs -o user=timh,domain=gns //hut-win-smb/scratch /mnt/Kdrive'
+   export BIBINPUTS=~/texmf/bibtex/bib/
+   export BSTINPUTS=~/texmf/bibtex/bst/
 elif [[ "$OSTYPE" == "darwin"* ]]; then
    # Mac OSX
    alias dircolors='gdircolors'
@@ -71,6 +73,8 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
    export SCREENRC=.screenrc_mac
    alias backup_database='rsync -havu --progress AWS_chatbot:/home/deploy/app/Data/meditation_users.db $HOME/Documents'
    alias remove_known_host='ssh-keygen -f "/Users/tim/.ssh/known_hosts" -R'
+   export BIBINPUTS=~/texmf/Library/bibtex/bib/
+   export BSTINPUTS=~/texmf/Library/bibtex/bst/
 fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -168,8 +172,6 @@ bindkey '^R' history-incremental-pattern-search-backward
 
 # set some environment variables
 export WORKON_HOME=~/mambaforge/envs/   # for pyvenv-workon in emacs  https://github.com/jorgenschaefer/pyvenv
-export BIBINPUTS=~/Library/texmf/bibtex/bib/
-export BSTINPUTS=~/Library/texmf/bibtex/bst/
 export PATH=/Library/TeX/texbin:$HOME/bin:/usr/local/bin:$PATH
 # use decent colors for colorized grep output
 export GREP_COLOR='0;40;31'
