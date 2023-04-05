@@ -123,3 +123,15 @@
 (map! :after ess
       :map inferior-ess-mode-map
       "_" #'ess-insert-assign)
+
+;; ;; use styler
+;; (def-package! reformatter
+;;   :config
+;;   (defconst Rscript-command "Rscript")
+;;   (reformatter-define styler
+;;     :program Rscript-command
+;;     :args (list "--vanilla" "-e" "con <- file(\"stdin\")
+;; out <- styler::style_text(readLines(con))
+;; close(con)
+;; out")
+;;     :lighter " styler"))
