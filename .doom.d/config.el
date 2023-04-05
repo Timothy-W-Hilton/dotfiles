@@ -86,7 +86,9 @@
   (setq python-shell-interpreter "jupyter"
         python-shell-interpreter-args "console --simple-prompt"
         python-shell-completion-native-disabled-interpreters '("jupyter")
-        lsp-file-watch-threshold 9999))
+        lsp-file-watch-threshold 9999)
+  (custom-theme-set-faces! '(doom-zenburn)
+   `(ansi-color-yellow :background, "#F18C96")))
 
 ;; formatting with black
 (use-package! python-black
