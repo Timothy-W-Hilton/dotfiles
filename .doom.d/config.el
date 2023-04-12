@@ -90,6 +90,24 @@
   (custom-theme-set-faces! '(doom-zenburn)
    `(ansi-color-yellow :background, "#F18C96")))
 
+;; setup key bindings for python LSP (language server protocol)
+;; from https://github.com/emacs-lsp/lsp-mode/issues/1532#issuecomment-602384182
+(use-package lsp-mode
+  :ensure t
+  :defer t
+  :after python
+  :hook (lsp-mode . (lambda ()
+                      (let ((lsp-keymap-prefix "s-l"))
+                        (lsp-enable-which-key-integration))))
+  :init
+  (setq lsp-keep-workspace-alive nil
+        lsp-signature-doc-lines 5
+        lsp-idle-delay 0.5
+        lsp-prefer-capf t
+        lsp-client-packages nil)
+  :config
+  (define-key lsp-mode-map (kbd "s-l") lsp-command-map))
+
 ;; formatting with black
 (use-package! python-black
   :demand t
