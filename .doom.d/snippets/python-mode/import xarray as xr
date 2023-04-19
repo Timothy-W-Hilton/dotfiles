@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: import xarray as xr
+# key: asxr
+# --
+import xarray as xr

@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: R breakpoint
+# uuid:
+# key: br
+# condition: t
+# --
+browser()
+$0
