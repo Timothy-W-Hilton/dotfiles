@@ -36,7 +36,7 @@
 ;; `load-theme' function. This is the default:
 ;; (setq doom-theme 'doom-one)  ; default
 (setq doom-theme 'doom-zenburn)  ; the python interpreter error face is awful :(
-;;(setq doom-theme 'doom-city-lights)                                 ;
+;;(setq doom-theme 'doom-nord-aurora)                                 ;
                              ;
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -87,8 +87,10 @@
         python-shell-interpreter-args "console --simple-prompt"
         python-shell-completion-native-disabled-interpreters '("jupyter")
         lsp-file-watch-threshold 9999)
-  (custom-theme-set-faces! '(doom-zenburn)
+  (custom-theme-set-faces! '(doom-zenburn, doom-nord-aurora)
    `(ansi-color-yellow :background, "#F18C96")))
+
+(add-hook! inferior-python-mode :append (yas-activate-extra-mode 'python-mode))
 
 ;; setup key bindings for python LSP (language server protocol)
 ;; from https://github.com/emacs-lsp/lsp-mode/issues/1532#issuecomment-602384182
