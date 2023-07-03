@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: print python executable
+# key: pexe
+# --
+import sys; print(sys.executable)

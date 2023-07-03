@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: import holoviews as hv
+# key: ashv
+# --
+import holoviews as hv
