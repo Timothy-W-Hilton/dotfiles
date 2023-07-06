@@ -58,3 +58,6 @@
 (package! dockerfile-mode)
 ;; (package! pydoc)
 ;; (package! jedi)
+(package! unfill)
+;; (package! sphinx-doc)  # insert python docstrings in sphinx format
+(package! numpydoc)

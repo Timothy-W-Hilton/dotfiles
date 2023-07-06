@@ -1,5 +1,5 @@
-# key: src
+# -*- mode: snippet -*-
 # name: source
-# adapted from https://emacs.stackexchange.com/a/21290/36625
+# key: src
 # --
-source('${1:$$(unless yas-modified-p (completing-read "File: " 'read-file-name-internal))}')
+source('${1:$$(unless yas-modified-p (completing-read "File: " 'read-file-name-internal))}')$0

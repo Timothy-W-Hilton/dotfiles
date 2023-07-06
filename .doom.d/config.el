@@ -91,6 +91,7 @@
    `(ansi-color-yellow :background, "#F18C96")))
 
 (add-hook! inferior-python-mode :append (yas-activate-extra-mode 'python-mode))
+(add-hook! inferior-ess-r-mode :append (yas-activate-extra-mode 'ess-mode))  ;; iESS mode goes with inferior R processes - i.e. an R interpreter buffer.  defined in ess-r-mode.el
 
 ;; setup key bindings for python LSP (language server protocol)
 ;; from https://github.com/emacs-lsp/lsp-mode/issues/1532#issuecomment-602384182
