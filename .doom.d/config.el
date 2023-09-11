@@ -107,9 +107,17 @@
         lsp-signature-doc-lines 5
         lsp-idle-delay 0.5
         lsp-prefer-capf t
-        lsp-client-packages nil)
+        lsp-client-packages nil
+        lsp-ui-doc-max-height 50
+        lsp-ui-doc-max-width 81
+        lsp-ui-doc-position 'top)
   :config
-  (define-key lsp-mode-map (kbd "s-l") lsp-command-map))
+  ;; (setq lsp-ui-doc-show-with-cursor t)  ## from https://www.reddit.com/r/DoomEmacs/comments/wqpbdf/how_to_get_the_lspuidocshow_popup_to_show_while/
+  ;; (setq lsp-ui-doc-delay 0.2)  ## from https://www.reddit.com/r/DoomEmacs/comments/wqpbdf/how_to_get_the_lspuidocshow_popup_to_show_while/
+  (define-key lsp-mode-map (kbd "s-l") lsp-command-map)
+  (define-key lsp-mode-map (kbd "s-l h s") #'lsp-ui-doc-show)
+  (define-key lsp-mode-map (kbd "s-l h f") #'lsp-ui-doc-focus-frame))
+
 
 ;; formatting with black
 (use-package! python-black
