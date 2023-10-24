@@ -61,3 +61,12 @@
 (package! unfill)
 ;; (package! sphinx-doc)  # insert python docstrings in sphinx format
 (package! numpydoc)
+(package! tree-sitter)
+(package! tree-sitter-langs)
+
+;; ts-fold currently only works with tree-sitter.el, not the
+;; included-with-emacs-29 treesite.el :/
+;; see https://github.com/emacs-tree-sitter/ts-fold/issues/48
+;;
+;; (package! ts-fold
+;;   :recipe (:host github :repo "emacs-tree-sitter/ts-fold"))
