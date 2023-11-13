@@ -58,6 +58,8 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
    # suggestion from Ray Vercoelen email <2021-09-27 14:13>for dealing with DNS problems on the GNS VPN.
    alias setup_GNS_VPN_DNS='sudo resolvectl dns vpn 161.65.38.65 161.65.44.65 && resolvectl domain vpn gns.cri.nz corp.gns.cri.nz geonet.org.nz'
+   alias gcc="/usr/bin/gcc-10"
+   alias g++="/usr/bin/g++-10"
    alias panoply=/home/timh/Software/PanoplyJ/panoply.sh
    alias open='xdg-open'
    alias mount_GNS_I='sudo mount -t cifs -o user=timh,domain=gns //hut-win-smb.corp.gns.cri.nz/gnsshared$  /mnt/Idrive'
@@ -137,6 +139,34 @@ compinit -u
 
 autoload -U zmv
 zmodload zsh/stat
+
+## --------------------------------------------------
+## vterm stuff
+##
+## vterm_printf() and vterm_prompt_end(), in combination, allow vterm (in emacs)
+## to keep track of what directory it's in, use c-n and c-p to navigate prompts,
+## etc.
+##
+## see https://github.com/akermu/emacs-libvterm/blob/master/README.md#directory-tracking-and-prompt-tracking
+vterm_printf() {
+    if [ -n "$TMUX" ] && ([ "${TERM%%-*}" = "tmux" ] || [ "${TERM%%-*}" = "screen" ]); then
+        # Tell tmux to pass the escape sequences through
+        printf "\ePtmux;\e\e]%s\007\e\\" "$1"
+    elif [ "${TERM%%-*}" = "screen" ]; then
+        # GNU screen (screen, screen-256color, screen-256color-bce)
+        printf "\eP\e]%s\007\e\\" "$1"
+    else
+        printf "\e]%s\e\\" "$1"
+    fi
+}
+
+vterm_prompt_end() {
+    vterm_printf "51;A$(whoami)@$(hostname):$(pwd)"
+}
+setopt PROMPT_SUBST
+PROMPT=$PROMPT'%{$(vterm_prompt_end)%}'
+## end vterm stuff
+## --------------------------------------------------
 
 function rsync_nersc()
 {
