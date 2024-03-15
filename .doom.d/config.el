@@ -92,6 +92,11 @@
 
 (add-hook! inferior-python-mode :append (yas-activate-extra-mode 'python-mode))
 (add-hook! inferior-ess-r-mode :append (yas-activate-extra-mode 'ess-mode))  ;; iESS mode goes with inferior R processes - i.e. an R interpreter buffer.  defined in ess-r-mode.el
+;; (add-hook 'snippet-mode-hook 'my-snippet-mode-hook)
+;; (defun my-snippet-mode-hook ()
+;;   "Custom behaviours for `snippet-mode'."
+;;   ; adapted from https://www.reddit.com/r/emacs/comments/ap78wi/comment/eg6a4lj/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+;;   (setq-local require-final-newline nil))
 
 ;; setup key bindings for python LSP (language server protocol)
 ;; from https://github.com/emacs-lsp/lsp-mode/issues/1532#issuecomment-602384182
@@ -109,7 +114,7 @@
         lsp-prefer-capf t
         lsp-client-packages nil
         lsp-ui-doc-max-height 50
-        lsp-ui-doc-max-width 81
+        lsp-ui-doc-max-width 150
         lsp-ui-doc-position 'top)
   :config
   ;; (setq lsp-ui-doc-show-with-cursor t)  ## from https://www.reddit.com/r/DoomEmacs/comments/wqpbdf/how_to_get_the_lspuidocshow_popup_to_show_while/
@@ -164,3 +169,4 @@
 ;; close(con)
 ;; out")
 ;;     :lighter " styler"))
+

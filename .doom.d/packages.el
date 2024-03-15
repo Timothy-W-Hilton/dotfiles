@@ -64,6 +64,11 @@
 (package! tree-sitter)
 (package! tree-sitter-langs)
 
+(package! rainbow-csv
+  :recipe (:host github :repo "emacs-vs/rainbow-csv"))
+
+
+
 ;; ts-fold currently only works with tree-sitter.el, not the
 ;; included-with-emacs-29 treesite.el :/
 ;; see https://github.com/emacs-tree-sitter/ts-fold/issues/48
