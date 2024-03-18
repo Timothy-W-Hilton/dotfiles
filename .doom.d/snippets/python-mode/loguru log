@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: loguru logger
+# key: log
+# --
+from loguru import logger

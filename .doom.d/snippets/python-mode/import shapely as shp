@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: import shapely as shp
+# key: asshp
+# --
+import shapely as shp

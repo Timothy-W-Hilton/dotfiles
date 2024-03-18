@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: pandas view whole
+# key: pdwhole
+# --
+with pd.option_context("display.max_rows", 1000, "display.max_columns", None, "display.precision", 3, "display.width", None,): print($1)
