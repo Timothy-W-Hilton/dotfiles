@@ -90,6 +90,7 @@
   (custom-theme-set-faces! '(doom-zenburn, doom-nord-aurora)
    `(ansi-color-yellow :background, "#F18C96")))
 
+(add-hook! 'python-mode-hook #'hs-minor-mode)
 (add-hook! inferior-python-mode :append (yas-activate-extra-mode 'python-mode))
 (add-hook! inferior-ess-r-mode :append (yas-activate-extra-mode 'ess-mode))  ;; iESS mode goes with inferior R processes - i.e. an R interpreter buffer.  defined in ess-r-mode.el
 ;; (add-hook 'snippet-mode-hook 'my-snippet-mode-hook)
