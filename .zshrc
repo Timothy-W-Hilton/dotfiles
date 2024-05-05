@@ -18,6 +18,12 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
       echo "wrote $HOME/Documents/CCycleBibliography/CCycleBibliography.html"
    }
 
+   function sshfs_GNS_linux_home()
+   {
+      sshfs -o idmap=user $USER@raukawa:/home/timh ~/mnt/timh/
+      echo "to unmount use: fusermount -u ~/mnt/timh"
+   }
+
    function sshfs_GNS_scratch()
    {
       sshfs -o idmap=user $USER@raukawa:/scratch/ ~/mnt/scratch/
