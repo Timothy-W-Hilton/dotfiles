@@ -90,6 +90,7 @@
   (custom-theme-set-faces! '(doom-zenburn, doom-nord-aurora)
    `(ansi-color-yellow :background, "#F18C96")))
 
+(add-hook! 'python-mode-hook #'hs-minor-mode)
 (add-hook! inferior-python-mode :append (yas-activate-extra-mode 'python-mode))
 (add-hook! inferior-ess-r-mode :append (yas-activate-extra-mode 'ess-mode))  ;; iESS mode goes with inferior R processes - i.e. an R interpreter buffer.  defined in ess-r-mode.el
 ;; (add-hook 'snippet-mode-hook 'my-snippet-mode-hook)
@@ -123,8 +124,13 @@
   (define-key lsp-mode-map (kbd "s-l h s") #'lsp-ui-doc-show)
   (define-key lsp-mode-map (kbd "s-l h f") #'lsp-ui-doc-focus-frame))
 
-
 ;; formatting with black
+;;
+;; isort: note from
+;; https://black.readthedocs.io/en/stable/guides/using_black_with_other_tools.html:
+;; isort helps to sort and format imports in your Python code. Black also
+;; formats imports, but in a different way from isort’s defaults which leads to
+;; conflicting changes.
 (use-package! python-black
   :demand t
   :after python
