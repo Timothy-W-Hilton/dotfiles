@@ -64,8 +64,6 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
    # suggestion from Ray Vercoelen email <2021-09-27 14:13>for dealing with DNS problems on the GNS VPN.
    alias setup_GNS_VPN_DNS='sudo resolvectl dns vpn 161.65.38.65 161.65.44.65 && resolvectl domain vpn gns.cri.nz corp.gns.cri.nz geonet.org.nz'
-   alias gcc="/usr/bin/gcc-10"
-   alias g++="/usr/bin/g++-10"
    alias panoply=/home/timh/Software/PanoplyJ/panoply.sh
    alias open='xdg-open'
    alias mount_GNS_I='sudo mount -t cifs -o user=timh,domain=gns //hut-win-smb.corp.gns.cri.nz/gnsshared$  /mnt/Idrive'
@@ -208,7 +206,7 @@ bindkey '^R' history-incremental-pattern-search-backward
 
 # set some environment variables
 export WORKON_HOME=~/mambaforge/envs/   # for pyvenv-workon in emacs  https://github.com/jorgenschaefer/pyvenv
-export PATH=/Library/TeX/texbin:$HOME/bin:/usr/local/bin:$PATH
+export PATH=/Library/TeX/texbin:$HOME/.config/emacs/bin:$HOME/bin:/usr/local/bin:$PATH
 # use decent colors for colorized grep output
 export GREP_COLOR='0;40;31'
 export SARIKA_INPUT=~/work/Data/STEM/input/
