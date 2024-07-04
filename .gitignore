@@ -171,6 +171,10 @@ cache/
 *.pdf
 *.png
 
+# xESMF regridding stuff
+########################
+*.ESMF_LogFile
+
 # R data sets #
 ###############
 *.rds
