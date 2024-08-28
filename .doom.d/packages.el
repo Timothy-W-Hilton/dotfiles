@@ -67,7 +67,7 @@
 (package! rainbow-csv
   :recipe (:host github :repo "emacs-vs/rainbow-csv"))
 
-
+(package! python-mls)  ;; https://github.com/jdtsmith/python-mls
 
 ;; ts-fold currently only works with tree-sitter.el, not the
 ;; included-with-emacs-29 treesite.el :/
