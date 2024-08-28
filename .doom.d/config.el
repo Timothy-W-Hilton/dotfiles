@@ -145,6 +145,11 @@
                                                ; must be a list of strings https://github.com/wbolster/emacs-python-black/issues/7
   )
 
+;; python debugging with DAP
+(after! dap-mode
+  (setq dap-python-debugger 'debugpy)
+  (setq dap-auto-configure-features '(sessions locals controls tooltip)))
+
 ;; see https://github.com/hlissner/doom-emacs/issues/4178
 (setq mac-command-modifier      'super
       ns-command-modifier       'super
