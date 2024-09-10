@@ -102,28 +102,11 @@
 
 ;; setup key bindings for python LSP (language server protocol)
 ;; from https://github.com/emacs-lsp/lsp-mode/issues/1532#issuecomment-602384182
-(use-package lsp-mode
-  :ensure t
-  :defer t
-  :after python
-  :hook (lsp-mode . (lambda ()
-                      (let ((lsp-keymap-prefix "s-l"))
-                        (lsp-enable-which-key-integration))))
-  :init
-  (setq lsp-keep-workspace-alive nil
-        lsp-signature-doc-lines 5
-        lsp-idle-delay 0.5
-        lsp-prefer-capf t
-        lsp-client-packages nil
-        lsp-ui-doc-max-height 50
-        lsp-ui-doc-max-width 150
-        lsp-ui-doc-position 'top)
+
+(use-package! lsp-bridge
   :config
-  ;; (setq lsp-ui-doc-show-with-cursor t)  ## from https://www.reddit.com/r/DoomEmacs/comments/wqpbdf/how_to_get_the_lspuidocshow_popup_to_show_while/
-  ;; (setq lsp-ui-doc-delay 0.2)  ## from https://www.reddit.com/r/DoomEmacs/comments/wqpbdf/how_to_get_the_lspuidocshow_popup_to_show_while/
-  (define-key lsp-mode-map (kbd "s-l") lsp-command-map)
-  (define-key lsp-mode-map (kbd "s-l h s") #'lsp-ui-doc-show)
-  (define-key lsp-mode-map (kbd "s-l h f") #'lsp-ui-doc-focus-frame))
+  (setq lsp-bridge-enable-log nil)
+  (global-lsp-bridge-mode))
 
 ;; formatting with black
 ;;
