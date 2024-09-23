@@ -36,6 +36,12 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
       echo "to unmount use: fusermount -u ~/mnt/amp"
    }
 
+   function sshfs_GNS_raukawa_code()
+   {
+      sshfs -o idmap=user $USER@raukawa:/home/timh/Code /home/timh/mnt/raukawa_code/
+      echo "to unmount use: fusermount -u ~/mnt/raukawa_code"
+   }
+
    function backup_to_GNS()
    # backup /home/timh to raukawa.gns.cri.nz
    #
