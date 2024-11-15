@@ -77,6 +77,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
    alias mount_GNS_K='sudo mount -t cifs -o user=timh,domain=gns //hut-win-smb.corp.gns.cri.nz/scratch /mnt/Kdrive'
    export BIBINPUTS=~/texmf/bibtex/bib/
    export BSTINPUTS=~/texmf/bibtex/bst/
+   export R_BROWSER="xdg-open"  # use system default browser for opening URLs in R
 elif [[ "$OSTYPE" == "darwin"* ]]; then
    # Mac OSX
    alias dircolors='gdircolors'
