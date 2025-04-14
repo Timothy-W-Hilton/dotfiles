@@ -42,7 +42,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
       echo "to unmount use: fusermount -u ~/mnt/raukawa_code"
    }
 
-   function backup_to_GNS()
+   function backup_to_GNS_home()
    # backup /home/timh to raukawa.gns.cri.nz
    #
    # $@ passes flags from the command line through - useful for
@@ -52,13 +52,44 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 	rsync "$@" -Shavu --sparse --progress --delete-after --delete-excluded --exclude-from=$HOME/.backup_exclude --filter='protect .ssh' --filter='protect .backup_raukawa.log' --log-file=$HOME/.backup_log --log-file-format='%i %n%L %o' --remote-option=--log-file=/home/timh/.backup_raukawa.log /home/timh/ "raukawa:/home/timh/laptop_backup"
    }
 
-   function backup_to_GNS_minimal()
+   function backup_to_GNS_documents()
+   # backup /home/timh/Documents to raukawa.gns.cri.nz
+   #
+   # $@ passes flags from the command line through - useful for
+   # running with a "-n" to do a dry run
+   {
+	echo "syncing local ~/Documents/ to raukawa.  flags: $@"
+	rsync "$@" -Shavu --sparse --progress --delete-after --delete-excluded --exclude-from=$HOME/.backup_exclude --filter='protect .ssh' --filter='protect .backup_raukawa.log' --log-file=$HOME/.backup_log --log-file-format='%i %n%L %o' --remote-option=--log-file=/home/timh/.backup_raukawa.log /home/timh/Documents/ "raukawa:/home/timh/laptop_backup/Documents"
+   }
+
+   function backup_to_GNS_code()
+   # backup /home/timh/Code to raukawa.gns.cri.nz
+   #
+   # $@ passes flags from the command line through - useful for
+   # running with a "-n" to do a dry run
+   {
+	echo "syncing local ~/Code/ to raukawa.  flags: $@"
+	rsync "$@" -Shavu --sparse --progress --delete-after --delete-excluded --exclude-from=$HOME/.backup_exclude --filter='protect .ssh' --filter='protect .backup_raukawa.log' --log-file=$HOME/.backup_log --log-file-format='%i %n%L %o' --remote-option=--log-file=/home/timh/.backup_raukawa.log /home/timh/Code/ "raukawa:/home/timh/laptop_backup/Code"
+   }
+
+   function backup_to_GNS_tex()
+   # backup /home/timh/texmf/ to raukawa.gns.cri.nz
+   #
+   # $@ passes flags from the command line through - useful for
+   # running with a "-n" to do a dry run
+   {
+	echo "syncing local ~/texmf/ to raukawa.  flags: $@"
+    rsync "$@" -Shavu --sparse --progress --delete-after --delete-excluded --exclude-from=$HOME/.backup_exclude --filter='protect .ssh' --filter='protect .backup_raukawa.log' --log-file=$HOME/.backup_log --log-file-format='%i %n%L %o' --remote-option=--log-file=/home/timh/.backup_raukawa.log /home/timh/texmf/ "raukawa:/home/timh/laptop_backup/texmf"
+   }
+
+
+   function backup_to_GNS_daily()
    # backup /home/timh/Documents and /home/timh/Code to raukawa.gns.cri.nz
    #
    # $@ passes flags from the command line through - useful for
    # running with a "-n" to do a dry run
    {
-	echo "syncing local ~/Documents/ and ~/Code/ to raukawa.  flags: $@"
+	echo "syncing local ~/Documents/, ~/Code/, ~/texmf to raukawa.  flags: $@"
 	rsync "$@" -Shavu --sparse --progress --delete-after --delete-excluded --exclude-from=$HOME/.backup_exclude --filter='protect .ssh' --filter='protect .backup_raukawa.log' --log-file=$HOME/.backup_log --log-file-format='%i %n%L %o' --remote-option=--log-file=/home/timh/.backup_raukawa.log /home/timh/Documents/ "raukawa:/home/timh/laptop_backup/Documents"
 	rsync "$@" -Shavu --sparse --progress --delete-after --delete-excluded --exclude-from=$HOME/.backup_exclude --filter='protect .ssh' --filter='protect .backup_raukawa.log' --log-file=$HOME/.backup_log --log-file-format='%i %n%L %o' --remote-option=--log-file=/home/timh/.backup_raukawa.log /home/timh/Code/ "raukawa:/home/timh/laptop_backup/Code"
     rsync "$@" -Shavu --sparse --progress --delete-after --delete-excluded --exclude-from=$HOME/.backup_exclude --filter='protect .ssh' --filter='protect .backup_raukawa.log' --log-file=$HOME/.backup_log --log-file-format='%i %n%L %o' --remote-option=--log-file=/home/timh/.backup_raukawa.log /home/timh/texmf/ "raukawa:/home/timh/laptop_backup/texmf"
@@ -212,7 +243,7 @@ function kill_nersc_ssh()
 bindkey '^R' history-incremental-pattern-search-backward
 
 # set some environment variables
-export WORKON_HOME=~/mambaforge/envs/   # for pyvenv-workon in emacs  https://github.com/jorgenschaefer/pyvenv
+export WORKON_HOME=~/miniforge3/envs/   # for pyvenv-workon in emacs  https://github.com/jorgenschaefer/pyvenv
 export PATH=/Library/TeX/texbin:$HOME/.config/emacs/bin:$HOME/bin:/usr/local/bin:$PATH
 # use decent colors for colorized grep output
 export GREP_COLOR='0;40;31'
@@ -259,22 +290,19 @@ alias cgrep='grep --color=always'
 # eval "$(pyenv init --path)"
 # eval "$(pyenv init -)"
 
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/timh/mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/timh/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/timh/mambaforge/etc/profile.d/conda.sh" ]; then
-        . "/home/timh/mambaforge/etc/profile.d/conda.sh"
+    if [ -f "/home/timh/miniforge3/etc/profile.d/conda.sh" ]; then
+        . "/home/timh/miniforge3/etc/profile.d/conda.sh"
     else
-        export PATH="/home/timh/mambaforge/bin:$PATH"
+        export PATH="/home/timh/miniforge3/bin:$PATH"
     fi
 fi
 unset __conda_setup
-
-if [ -f "/home/timh/mambaforge/etc/profile.d/mamba.sh" ]; then
-    . "/home/timh/mambaforge/etc/profile.d/mamba.sh"
-fi
 # <<< conda initialize <<<
 
