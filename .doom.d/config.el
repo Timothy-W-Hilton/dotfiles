@@ -79,9 +79,6 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-;; ;; https://emacs-lsp.github.io/lsp-mode/page/faq/#how-do-i-force-lsp-mode-to-forget-the-workspace-folders-for-multi-root
-;; (advice-add 'lsp :before (lambda (&rest _args) (eval '(setf (lsp-session-server-id->folders (lsp-session)) (ht)))))
-
 (after! python
   (setq python-shell-interpreter "jupyter"
         python-shell-interpreter-args "console --simple-prompt"
@@ -94,19 +91,6 @@
 (add-hook! inferior-python-mode :append (yas-activate-extra-mode 'python-mode))
 (add-hook! inferior-python-mode :append (python-mls-mode))
 (add-hook! inferior-ess-r-mode :append (yas-activate-extra-mode 'ess-mode))  ;; iESS mode goes with inferior R processes - i.e. an R interpreter buffer.  defined in ess-r-mode.el
-;; (add-hook 'snippet-mode-hook 'my-snippet-mode-hook)
-;; (defun my-snippet-mode-hook ()
-;;   "Custom behaviours for `snippet-mode'."
-;;   ; adapted from https://www.reddit.com/r/emacs/comments/ap78wi/comment/eg6a4lj/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
-;;   (setq-local require-final-newline nil))
-
-;; setup key bindings for python LSP (language server protocol)
-;; from https://github.com/emacs-lsp/lsp-mode/issues/1532#issuecomment-602384182
-
-(use-package! lsp-bridge
-  :config
-  (setq lsp-bridge-enable-log nil)
-  (global-lsp-bridge-mode))
 
 ;; formatting with black
 ;;
@@ -119,7 +103,7 @@
   :demand t
   :after python
   :config
-  (add-hook! 'python-mode-hook #'python-black-on-save-mode)
+  ;; (add-hook! 'python-mode-hook #'python-black-on-save-mode)
   ;; Feel free to throw your own personal keybindings here
   (map! :leader :desc "Blacken Buffer" "m b b" #'python-black-buffer)
   (map! :leader :desc "Blacken Region" "m b r" #'python-black-region)
@@ -128,18 +112,6 @@
                                                ; must be a list of strings https://github.com/wbolster/emacs-python-black/issues/7
   )
 
-;; python debugging with DAP
-(after! dap-mode
-  (setq dap-python-debugger 'debugpy)
-  (setq dap-auto-configure-features '(sessions locals controls tooltip)))
-
-;; see https://github.com/hlissner/doom-emacs/issues/4178
-(setq mac-command-modifier      'super
-      ns-command-modifier       'super
-      mac-option-modifier       'meta
-      ns-option-modifier        'meta
-      mac-right-option-modifier 'meta
-      ns-right-option-modifier  'meta)
 
 ;;
 (setq org-agenda-files '("~/Documents/ResearchJournal"))

@@ -69,17 +69,6 @@
 
 (package! python-mls)  ;; https://github.com/jdtsmith/python-mls
 
-;; lsp-bridge https://github.com/manateelazycat/lsp-bridge#installation
-(when (package! lsp-bridge
-        :recipe (:host github
-                 :repo "manateelazycat/lsp-bridge"
-                 :branch "master"
-                 :files ("*.el" "*.py" "acm" "core" "langserver" "multiserver" "resources")
-                 ;; do not perform byte compilation or native compilation for lsp-bridge
-                 :build (:not compile)))
-  (package! markdown-mode)
-  (package! yasnippet))
-
 ;; ts-fold currently only works with tree-sitter.el, not the
 ;; included-with-emacs-29 treesite.el :/
 ;; see https://github.com/emacs-tree-sitter/ts-fold/issues/48
