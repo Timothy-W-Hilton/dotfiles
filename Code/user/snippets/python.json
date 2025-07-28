@@ -1,0 +1,87 @@
+{
+  "ipdb breakpoint": {
+    "prefix": "itr",
+    "body": "import ipbd;ipbd.set_trace()  # fmt: skip",
+    "description": "ipbd breakpoint with no black formatting"
+  },
+  "import pandas": {
+    "prefix": "aspd",
+    "body": "import pandas as pd",
+    "description": "import pandas as pd"
+  },
+  "import geopandas": {
+    "prefix": "asgpd",
+    "body": "import geopandas as pd",
+    "description": "import geopandas as pd"
+  },
+  "import numpy": {
+    "prefix": "asnp",
+    "body": "import numpy as np",
+    "description": "import numpy as np"
+  },
+  "import matplotlib.pyplot": {
+    "prefix": "asplt",
+    "body": "import matplotlib.pyplot as plt",
+    "description": "import matplotlib.pyplot as plt"
+  },
+  "import matplotlib": {
+    "prefix": "asmp",
+    "body": "import matplotlib as mpl",
+    "description": "import matplotlib as mpl"
+  },
+  "import seaborn": {
+    "prefix": "assea",
+    "body": "import seaborn as sns",
+    "description": "import seaborn as sns"
+  },
+  "import xarray": {
+    "prefix": "asxr",
+    "body": "import xarry as xr",
+    "description": "import xarray as xr "
+  },
+  "import holoviews": {
+    "prefix": "ashv",
+    "body": "import holoview as hv",
+    "description": "import holoviews as hv",
+  },
+  "import hvplot.pandas": {
+    "prefix": "ashvp",
+    "body": "import hvplot.pandas",
+    "description": "import hvplot.pandas"
+  },
+  "import hvplot.xarray": {
+    "prefix": "ashvx",
+    "body": "import hvplot.xarray",
+    "description": "import hvplot.xarray"
+  },
+  "import hvplot": {
+    "prefix": "ashv",
+    "body": "import hvplot",
+    "description": "import hvplot"
+  },
+  "import dask": {
+    "prefix": "asdask",
+    "body": "import dask",
+    "description": "import dask"
+  },
+  "import dask.dataframe": {
+    "prefix": "asdaskdf",
+    "body": "import dask.dataframe as dd",
+    "description": "import dask.dataframe as dd"
+  },
+  "import dask.array": {
+    "prefix": "asdaskar",
+    "body": "import dask.array as da",
+    "description": "import dask.array as da"
+  },
+  "import dask.distributed": {
+    "prefix": "asdaskd",
+    "body": "from dask.distributed import Client, progress",
+    "description": "import dask.distributed Client and progress"
+  },
+  "import loguru": {
+    "prefix": "imlog",
+    "body": "from loguru import logger",
+    "description": "from loguru import logger"
+  },
+}
