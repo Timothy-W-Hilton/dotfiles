@@ -93,3 +93,32 @@
 ;; Claude Code IDE at the bottom of the window with ediff buffers side by side
 ;; above it.
 (setq claude-code-ide-window-side 'bottom)
+
+;; python stuff ------------------------------
+(use-package! python-black
+  :demand t
+  :after python
+  :config
+  (add-hook! 'python-mode-hook #'python-black-on-save-mode)
+  ;; Feel free to throw your own personal keybindings here
+  (map! :leader :desc "Blacken Buffer" "m b b" #'python-black-buffer)
+  (map! :leader :desc "Blacken Region" "m b r" #'python-black-region)
+  (map! :leader :desc "Blacken Statement" "m b s" #'python-black-statement)
+  (setq python-black-extra-args '("--preview"))  ; --preview includes wrapping long strings 2022-03-24
+                                               ; must be a list of strings https://github.com/wbolster/emacs-python-black/issues/7
+  )
+
+(after! python
+  (custom-theme-set-faces! '(doom-zenburn, doom-nord-aurora)
+   `(ansi-color-yellow :background, "#F18C96")))
+
+(add-hook! 'python-mode-hook #'hs-minor-mode)
+(add-hook! inferior-python-mode :append (yas-activate-extra-mode 'python-mode))
+(add-hook! inferior-python-mode :append (python-mls-mode))
+(add-hook! inferior-ess-r-mode :append (yas-activate-extra-mode 'ess-mode))
+
+;; faces ------------------------------
+;;
+(custom-set-faces
+ '(magit-branch-current ((t (:foreground "#8CD0D3" :box (:line-width 1 :color "#8CD0D3")))))
+ '(org-headline-done ((t (:foreground "gray42")))))
