@@ -106,8 +106,10 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
    alias mount_GNS_I='sudo mount -t cifs -o user=timh,domain=gns //hut-win-smb.corp.gns.cri.nz/gnsshared$  /mnt/Idrive'
    alias mount_GNS_J='sudo mount -t cifs -o user=timh,domain=gns  //hut-win-smb.corp.gns.cri.nz/gnsfiles$  /mnt/Jdrive'
    alias mount_GNS_K='sudo mount -t cifs -o user=timh,domain=gns //hut-win-smb.corp.gns.cri.nz/scratch /mnt/Kdrive'
-   export BIBINPUTS=~/texmf/bibtex/bib/
-   export BSTINPUTS=~/texmf/bibtex/bst/
+   export BIBINPUTS=.:$HOME/texmf/bibtex/bib/:$BIBINPUTS
+   export BSTINPUTS=.:$HOME/texmf/bibtex/bst/:$BSTINPUTS
+    export TEXMFHOME=$HOME/texmf
+   export TEXINPUTS=.:$HOME/texmf/tex/latex/:$TEXINPUTS
    export R_BROWSER="xdg-open"  # use system default browser for opening URLs in R
 elif [[ "$OSTYPE" == "darwin"* ]]; then
    # Mac OSX
@@ -306,3 +308,7 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
