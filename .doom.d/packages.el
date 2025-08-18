@@ -73,3 +73,6 @@
 
 ;; from https://www.reddit.com/r/emacs/comments/1miovop/comment/n78u07f/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
 (package! claude-code-ide :recipe (:type git :host github :repo "manzaltu/claude-code-ide.el"))
+
+(package! auctex)
+(package! reftex)

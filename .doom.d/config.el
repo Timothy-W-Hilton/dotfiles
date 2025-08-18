@@ -132,3 +132,7 @@
 (custom-set-faces
  '(magit-branch-current ((t (:foreground "#8CD0D3" :box (:line-width 1 :color "#8CD0D3")))))
  '(org-headline-done ((t (:foreground "gray42")))))
+
+;; LaTeX stuff ------------------------------
+;;
+(setq reftex-default-bibliography '("/home/timh/texmf/bibtex/bib/carbon.bib"))
