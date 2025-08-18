@@ -134,5 +134,14 @@
  '(org-headline-done ((t (:foreground "gray42")))))
 
 ;; LaTeX stuff ------------------------------
-;;
-(setq reftex-default-bibliography '("/home/timh/texmf/bibtex/bib/carbon.bib"))
+
+;; set the default reftex bibliography file
+;; make reftex use the bibtex backend
+;; use Okular by default to view PDFs
+(after! tex
+  (setq TeX-view-program-selection '((output-pdf "Okular")
+                                     (output-dvi "Okular")
+                                     (output-html "xdg-open")))
+  (setq reftex-default-bibliography '("/home/timh/texmf/bibtex/bib/carbon.bib"))
+  (setq reftex-cite-format 'natbib)
+)
