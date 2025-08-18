@@ -77,6 +77,16 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
+;; emacs itself ------------------------------
+
+;; sidestep the new-frames-are-tiny bug in Emacs 29.1
+;; https://debbugs.gnu.org/cgi/bugreport.cgi?bug=67654
+;; another workaround is to use the "no toolkits" emacs
+;; I think "no toolkits" means terminal-only
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
+
+;; AI stuff ------------------------------
+
 ;; from https://github.com/copilot-emacs/copilot.el?tab=readme-ov-file#example-for-doom-emacs
 ;; accept completion from copilot and fallback to company
 (use-package! copilot
