@@ -248,7 +248,7 @@ bindkey '^R' history-incremental-pattern-search-backward
 export WORKON_HOME=~/miniforge3/envs/   # for pyvenv-workon in emacs  https://github.com/jorgenschaefer/pyvenv
 export PATH=/Library/TeX/texbin:$HOME/.config/emacs/bin:$HOME/bin:/usr/local/bin:$PATH
 # use decent colors for colorized grep output
-export GREP_COLOR='0;40;31'
+export GREP_COLORS='mt=0;40;31'
 export SARIKA_INPUT=~/work/Data/STEM/input/
 export WORK=$HOME/work
 export NERSCHOME=/Users/tim/work/NERSC_home/
