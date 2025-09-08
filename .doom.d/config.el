@@ -79,6 +79,20 @@
 
 ;; emacs itself ------------------------------
 
+;; In terminal mode (emacs -nw), the cursor appearance is controlled by the
+;; terminal emulator, not by Emacs. When Emacs is drawing its own window (GUI
+;; mode), it has total control over how the cursor is displayed, but inside a
+;; terminal it has no access to any API that allows it to change the shape or
+;; color of the cursor.
+;;
+;; You can send ANSI escape sequences directly to the terminal using
+;; send-string-to-terminal: Theme differences in daemon vs standard GUI for
+;; the cursor column · Issue #6221 · doomemacs/doomemacs
+(defun my/set-terminal-cursor-color (color)
+  "Set cursor color in terminal using ANSI escape sequences."
+  (interactive "sEnter color: ")
+  (send-string-to-terminal (format "\033]12;%s\007" color)))
+
 ;; sidestep the new-frames-are-tiny bug in Emacs 29.1
 ;; https://debbugs.gnu.org/cgi/bugreport.cgi?bug=67654
 ;; another workaround is to use the "no toolkits" emacs
