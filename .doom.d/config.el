@@ -96,13 +96,17 @@
               ("TAB" . 'copilot-accept-completion)
               ("C-TAB" . 'copilot-accept-completion-by-word)
               ("C-<tab>" . 'copilot-accept-completion-by-word)))
-(add-to-list
- 'copilot-indentation-alist
- '(org-mode 4))
-(add-to-list
- 'copilot-indentation-alist
- '(snippet-mode 4))
-
+(after! copilot
+       (add-to-list
+        'copilot-indentation-alist
+        '(org-mode 4))
+       (add-to-list
+        'copilot-indentation-alist
+        '(snippet-mode 4))
+       (add-to-list
+        'copilot-indentation-alist
+        '(elisp-mode lisp-indent-offset))
+       )
 ;; get rid of unformatted HTML output from pyright
 (setq eglot-prefer-plaintext t)
 ;; use the claude-code-ide package; when displaying ediff buffers place the
