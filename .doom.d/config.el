@@ -93,6 +93,10 @@
   (interactive "sEnter color: ")
   (send-string-to-terminal (format "\033]12;%s\007" color)))
 
+(when (not (display-graphic-p))
+  (custom-theme-set-faces! 'doom-zenburn
+    '(hl-line :background "#3f3f3f")))
+
 ;; sidestep the new-frames-are-tiny bug in Emacs 29.1
 ;; https://debbugs.gnu.org/cgi/bugreport.cgi?bug=67654
 ;; another workaround is to use the "no toolkits" emacs
