@@ -182,5 +182,6 @@
 
 ;; use M-= for expand region because C-= is intercepted by the terminal in
 ;; terminal mode
-(map! :desc "Expand region"
+(map! :desc "Expand region (terminal mode only)"
+      :when (not (display-graphic-p))
       "M-=" #'er/expand-region)
