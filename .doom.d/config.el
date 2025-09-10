@@ -173,3 +173,9 @@
   (setq reftex-default-bibliography '("/home/timh/texmf/bibtex/bib/carbon.bib"))
   (setq reftex-cite-format 'natbib)
 )
+
+;; keybindings ------------------------------
+;; some of these may be redundant with the defaults in Doom
+
+(map! :desc "Toggle Claude Code IDE"
+        "C-c t C" #'claude-code-ide-toggle)
