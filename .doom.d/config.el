@@ -179,3 +179,8 @@
 
 (map! :desc "Toggle Claude Code IDE"
         "C-c t C" #'claude-code-ide-toggle)
+
+;; use M-= for expand region because C-= is intercepted by the terminal in
+;; terminal mode
+(map! :desc "Expand region"
+      "M-=" #'er/expand-region)
