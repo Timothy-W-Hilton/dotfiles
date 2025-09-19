@@ -93,6 +93,10 @@
   (interactive "sEnter color: ")
   (send-string-to-terminal (format "\033]12;%s\007" color)))
 
+(when (not (display-graphic-p))
+  (custom-theme-set-faces! 'doom-zenburn
+    '(hl-line :background "#3f3f3f")))
+
 ;; sidestep the new-frames-are-tiny bug in Emacs 29.1
 ;; https://debbugs.gnu.org/cgi/bugreport.cgi?bug=67654
 ;; another workaround is to use the "no toolkits" emacs
@@ -169,3 +173,15 @@
   (setq reftex-default-bibliography '("/home/timh/texmf/bibtex/bib/carbon.bib"))
   (setq reftex-cite-format 'natbib)
 )
+
+;; keybindings ------------------------------
+;; some of these may be redundant with the defaults in Doom
+
+(map! :desc "Toggle Claude Code IDE"
+        "C-c t C" #'claude-code-ide-toggle)
+
+;; use M-= for expand region because C-= is intercepted by the terminal in
+;; terminal mode
+(map! :desc "Expand region (terminal mode only)"
+      :when (not (display-graphic-p))
+      "M-=" #'er/expand-region)
