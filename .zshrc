@@ -184,6 +184,39 @@ compinit -u
 autoload -U zmv
 zmodload zsh/stat
 
+function ssh_tunnel() {
+    # Get port number (required)
+    if [[ -z "$1" ]]; then
+        echo "Usage: ssh_tunnel <port> [machine]"
+        echo "Example: ssh_tunnel 5007"
+        echo "Example: ssh_tunnel 5007 raukawa"
+        return 1
+    fi
+
+    local port="$1"
+    local machine="${2:-raukawa}"  # Default to raukawa if not specified
+
+    # Create the SSH tunnel
+    echo "Creating SSH tunnel..."
+    echo "Running: ssh -fN -L ${port}:localhost:${port} ${machine}"
+
+    # Execute the command directly (not as a string variable)
+    ssh -fN -L ${port}:localhost:${port} ${machine}
+
+    if [[ $? -eq 0 ]]; then
+        echo "SSH tunnel created successfully!"
+        echo "To find this tunnel process, use:"
+        echo "ps aux | grep \"ssh.*-L ${port}:localhost:${port}.*${machine}\" | grep -v grep"
+        echo ""
+        echo "To kill this tunnel later, you can use:"
+        echo "pkill -f \"ssh.*-L ${port}:localhost:${port}.*${machine}\""
+    else
+        echo "Failed to create SSH tunnel"
+        return 1
+    fi
+}
+
+
 ## --------------------------------------------------
 ## vterm stuff
 ##
@@ -312,3 +345,6 @@ unset __conda_setup
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# end Tim additions
+#
