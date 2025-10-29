@@ -79,29 +79,37 @@
 
 ;; emacs itself ------------------------------
 
-;; In terminal mode (emacs -nw), the cursor appearance is controlled by the
-;; terminal emulator, not by Emacs. When Emacs is drawing its own window (GUI
-;; mode), it has total control over how the cursor is displayed, but inside a
-;; terminal it has no access to any API that allows it to change the shape or
-;; color of the cursor.
-;;
-;; You can send ANSI escape sequences directly to the terminal using
-;; send-string-to-terminal: Theme differences in daemon vs standard GUI for
-;; the cursor column · Issue #6221 · doomemacs/doomemacs
 (defun my/set-terminal-cursor-color (color)
   "Set cursor color in terminal using ANSI escape sequences."
   (interactive "sEnter color: ")
   (send-string-to-terminal (format "\033]12;%s\007" color)))
-
-(when (not (display-graphic-p))
-  (custom-theme-set-faces! 'doom-zenburn
-    '(hl-line :background "#3f3f3f")))
 
 ;; sidestep the new-frames-are-tiny bug in Emacs 29.1
 ;; https://debbugs.gnu.org/cgi/bugreport.cgi?bug=67654
 ;; another workaround is to use the "no toolkits" emacs
 ;; I think "no toolkits" means terminal-only
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
+
+;; spellcheck ------------------------------
+(after! ispell
+  (setq ispell-dictionary "en")
+  (setq ispell-personal-dictionary (expand-file-name "~/.aspell.en.pws")))
+
+(after! flyspell
+  (require 'flyspell-correct)
+  (map! :map flyspell-mode-map
+        "M-$" #'flyspell-correct-wrapper)
+  
+  ;; Completely disable duplicate word detection
+  (defun flyspell-word-search-backward (word bound)
+    "Disabled - always return nil to prevent duplicate detection."
+    nil)
+  
+  (defun flyspell-word-search-forward (word bound)
+    "Disabled - always return nil to prevent duplicate detection."
+    nil))
+
+(setq flyspell-mark-duplications-flag nil)
 
 ;; AI stuff ------------------------------
 
@@ -169,19 +177,13 @@
 (after! tex
   (setq TeX-view-program-selection '((output-pdf "Okular")
                                      (output-dvi "Okular")
-                                     (output-html "xdg-open")))
+                                     (output-html "xdg-open"))))
+
+(after! reftex
   (setq reftex-default-bibliography '("/home/timh/texmf/bibtex/bib/carbon.bib"))
-  (setq reftex-cite-format 'natbib)
-)
+  (setq reftex-cite-format 'natbib))
 
-;; keybindings ------------------------------
-;; some of these may be redundant with the defaults in Doom
-
-(map! :desc "Toggle Claude Code IDE"
-        "C-c t C" #'claude-code-ide-toggle)
-
-;; use M-= for expand region because C-= is intercepted by the terminal in
-;; terminal mode
-(map! :desc "Expand region (terminal mode only)"
-      :when (not (display-graphic-p))
-      "M-=" #'er/expand-region)
+;; disable +fold-mode in LaTeX buffers, because it interferes with auctex key
+;; bindings
+(after! latex
+  (remove-hook 'LaTeX-mode-hook #'+fold-mode))

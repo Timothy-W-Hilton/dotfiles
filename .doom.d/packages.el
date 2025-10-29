@@ -48,6 +48,8 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;; (unpin! t)
 
+(package! flyspell-correct)
+
 (package! python-black)
 (package! json-mode)
 (package! yaml-mode)
