@@ -174,14 +174,20 @@
 ;; set the default reftex bibliography file
 ;; make reftex use the bibtex backend
 ;; use Okular by default to view PDFs
+
+
 (after! tex
   (setq TeX-view-program-selection '((output-pdf "Okular")
                                      (output-dvi "Okular")
                                      (output-html "xdg-open"))))
 
+(after! bibtex
+    (add-hook 'bibtex-mode-hook #'reftex-mode))
+
 (after! reftex
   (setq reftex-default-bibliography '("/home/timh/texmf/bibtex/bib/carbon.bib"))
   (setq reftex-cite-format 'natbib))
+
 
 ;; disable +fold-mode in LaTeX buffers, because it interferes with auctex key
 ;; bindings
