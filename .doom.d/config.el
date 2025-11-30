@@ -182,12 +182,24 @@
                                      (output-html "xdg-open"))))
 
 (after! bibtex
-    (add-hook 'bibtex-mode-hook #'reftex-mode))
+  (add-hook 'bibtex-mode-hook #'reftex-mode))
 
 (after! reftex
   (setq reftex-default-bibliography '("/home/timh/texmf/bibtex/bib/carbon.bib"))
-  (setq reftex-cite-format 'natbib))
+  (setq reftex-cite-format 'natbib)
 
+  (defun refresh-reftex-bib ()
+    "Reload bibliography cache."
+    (interactive)
+    (let ((bibfiles (reftex-get-bibfile-list)))
+      (dolist (bibfile bibfiles)
+        (let ((cache-file (concat (file-name-directory bibfile) ".auctex-auto/"
+                                  (file-name-sans-extension (file-name-nondirectory bibfile)) ".el")))
+          (when (file-exists-p cache-file)
+            (load-file cache-file)
+            (when (boundp 'LaTeX-auto-bibitem)
+              (apply #'LaTeX-add-bibitems LaTeX-auto-bibitem))))))
+    (message "Bibliography reloaded")))
 
 ;; disable +fold-mode in LaTeX buffers, because it interferes with auctex key
 ;; bindings
