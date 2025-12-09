@@ -189,12 +189,27 @@
   (setq reftex-cite-format 'natbib)
 
   (defun refresh-reftex-bib ()
-    "Reload bibliography cache."
+    "Reload bibliography cache, regenerating if bib file is newer."
     (interactive)
     (let ((bibfiles (reftex-get-bibfile-list)))
       (dolist (bibfile bibfiles)
         (let ((cache-file (concat (file-name-directory bibfile) ".auctex-auto/"
                                   (file-name-sans-extension (file-name-nondirectory bibfile)) ".el")))
+          ;; Regenerate cache if it doesn't exist or is older than bib file
+          (when (or (not (file-exists-p cache-file))
+                    (time-less-p (file-attribute-modification-time (file-attributes cache-file))
+                                (file-attribute-modification-time (file-attributes bibfile))))
+            (let ((buf (find-buffer-visiting bibfile))
+                  (need-to-kill nil))
+              (unless buf
+                (setq buf (find-file-noselect bibfile))
+                (setq need-to-kill t))
+              (with-current-buffer buf
+                (when (fboundp 'TeX-auto-write)
+                  (TeX-auto-write)))
+              (when need-to-kill
+                (kill-buffer buf))))
+          ;; Load the cache
           (when (file-exists-p cache-file)
             (load-file cache-file)
             (when (boundp 'LaTeX-auto-bibitem)
