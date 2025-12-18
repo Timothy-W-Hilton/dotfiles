@@ -72,19 +72,24 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 	rsync "$@" -Shavu --sparse --progress --delete-after --delete-excluded --exclude-from=$HOME/.backup_exclude --filter='protect .ssh' --filter='protect .backup_raukawa.log' --log-file=$HOME/.backup_log --log-file-format='%i %n%L %o' --remote-option=--log-file=/home/timh/.backup_raukawa.log /home/timh/Code/ "raukawa:/home/timh/laptop_backup/Code"
    }
 
-   function backup_to_GNS_tex()
-   # backup /home/timh/texmf/ to raukawa.gns.cri.nz
+   function backup_to_GNS_bibliographies()
+   # backup /home/timh/texmf/ and /home/timh/Zotero/ to raukawa.gns.cri.nz
    #
    # $@ passes flags from the command line through - useful for
    # running with a "-n" to do a dry run
    {
-	echo "syncing local ~/texmf/ to raukawa.  flags: $@"
+	echo "syncing local ~/texmf/ and ~/Zotero/ to raukawa.  flags: $@"
     rsync "$@" -Shavu --sparse --progress --delete-after --delete-excluded --exclude-from=$HOME/.backup_exclude --filter='protect .ssh' --filter='protect .backup_raukawa.log' --log-file=$HOME/.backup_log --log-file-format='%i %n%L %o' --remote-option=--log-file=/home/timh/.backup_raukawa.log /home/timh/texmf/ "raukawa:/home/timh/laptop_backup/texmf"
+    rsync "$@" -Shavu --sparse --progress --delete-after --delete-excluded --exclude-from=$HOME/.backup_exclude --filter='protect .ssh' --filter='protect .backup_raukawa.log' --log-file=$HOME/.backup_log --log-file-format='%i %n%L %o' --remote-option=--log-file=/home/timh/.backup_raukawa.log /home/timh/Zotero/ "raukawa:/home/timh/laptop_backup/Zotero"
    }
 
 
    function backup_to_GNS_daily()
-   # backup /home/timh/Documents and /home/timh/Code to raukawa.gns.cri.nz
+   # backup to raukawa.gns.cri.nz:
+   # /home/timh/Documents 
+   # /home/timh/Code
+   # /home/timh/texmf
+   # /home/timh/Zotero
    #
    # $@ passes flags from the command line through - useful for
    # running with a "-n" to do a dry run
@@ -93,6 +98,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 	rsync "$@" -Shavu --sparse --progress --delete-after --delete-excluded --exclude-from=$HOME/.backup_exclude --filter='protect .ssh' --filter='protect .backup_raukawa.log' --log-file=$HOME/.backup_log --log-file-format='%i %n%L %o' --remote-option=--log-file=/home/timh/.backup_raukawa.log /home/timh/Documents/ "raukawa:/home/timh/laptop_backup/Documents"
 	rsync "$@" -Shavu --sparse --progress --delete-after --delete-excluded --exclude-from=$HOME/.backup_exclude --filter='protect .ssh' --filter='protect .backup_raukawa.log' --log-file=$HOME/.backup_log --log-file-format='%i %n%L %o' --remote-option=--log-file=/home/timh/.backup_raukawa.log /home/timh/Code/ "raukawa:/home/timh/laptop_backup/Code"
     rsync "$@" -Shavu --sparse --progress --delete-after --delete-excluded --exclude-from=$HOME/.backup_exclude --filter='protect .ssh' --filter='protect .backup_raukawa.log' --log-file=$HOME/.backup_log --log-file-format='%i %n%L %o' --remote-option=--log-file=/home/timh/.backup_raukawa.log /home/timh/texmf/ "raukawa:/home/timh/laptop_backup/texmf"
+    rsync "$@" -Shavu --sparse --progress --delete-after --delete-excluded --exclude-from=$HOME/.backup_exclude --filter='protect .ssh' --filter='protect .backup_raukawa.log' --log-file=$HOME/.backup_log --log-file-format='%i %n%L %o' --remote-option=--log-file=/home/timh/.backup_raukawa.log /home/timh/Zotero/ "raukawa:/home/timh/laptop_backup/Zotero"
    }
 
    function apt-get_history() {
