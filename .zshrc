@@ -11,6 +11,36 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
    # we're on a linux box
    alias alu='apt list --upgradable'
 
+   split-last-two() {
+       if [[ $# -ne 1 ]]; then
+           echo "Usage: split-last-two <file.pdf>"
+           return 1
+       fi
+
+       local f="$1"
+       [[ -f "$f" ]] || { echo "File not found: $f"; return 1; }
+
+       local pages
+       pages=$(qpdf --show-npages "$f") || return 1
+
+       if (( pages < 2 )); then
+           echo "PDF has only one page; nothing to split."
+           return 1
+       fi
+
+       local base="${f%.pdf}"
+       local body="${base}_body.pdf"
+       local last="${base}_lastpage.pdf"
+
+       qpdf --empty --pages "$f" "1-$((pages-1))" -- "$body" || return 1
+       qpdf --empty --pages "$f" "$pages" -- "$last" || return 1
+
+       echo "Created:"
+       echo "  $body"
+       echo "  $last"
+   }
+
+
    function ccycle_bibliography_update()
    {
       cd $HOME/Documents/CCycleBibliography
