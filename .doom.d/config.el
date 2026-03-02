@@ -43,6 +43,11 @@
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
 (setq org-agenda-files '("~/Documents/ResearchJournal"))
+;; change org-mode to use a single checkbox for each TODO item, and make it so
+;; that you can't mark a TODO item as done until all of its checkboxes are
+;; checked
+(after! org
+  (setq org-enforce-todo-checkbox-dependencies t))
 
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
