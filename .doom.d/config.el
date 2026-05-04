@@ -35,6 +35,17 @@
 ;; `load-theme' function. This is the default:
 (setq doom-theme 'doom-zenburn)
 
+;; give doom ibuffer selection more contrast while still fitting in with the
+;; zenburn color scheme
+(custom-theme-set-faces! 'doom-zenburn
+  '(hl-line
+    :background "#585858"
+    :extend t)
+  '(vertico-current
+    :background "#585858"
+    :foreground "#FFFFC0"
+    :weight bold))
+
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
