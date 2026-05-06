@@ -217,3 +217,11 @@ Thumbs.db
 
 # data/document files #
 #######################
+*.nc
+*.h5
+*.xlsx
+
+# AI tool stuff #
+#################
+.claude/
+.codex/
